@@ -1,0 +1,373 @@
+:root{
+    font-family: Arial, Helvetica, sans-serif;
+
+    --color-txt-primary: #000000;
+    --color-txt-secondary: #cecece;
+
+    /* Botones */
+    --color-btn-primary-bg: #0066ff;
+    --color-btn-primary-bg-text: white;
+    --color-btn-primary-bg-hover: #0245a8;
+    --color-btn-primary-bg-hover-text: white;
+    --color-btn-secondary-bg: #c0c0c0;
+    --color-btn-secondary-bg-text: #c0c0c0;
+    --color-btn-secondary-bg-hover: #c0c0c0;
+    --color-btn-secondary-bg-hover-text: white;
+    --color-btn-secondary-shdw: #21212133;
+
+    /* Textos especiales */
+    --color-offer-txt: #ff0000;
+    --color-offer-block-bg: #ff0000;
+    --color-offer-block-txt: #ffffff;
+    --color-new-txt: #0066ff;
+    --color-new-block-bg: #0066ff;
+    --color-new-block-txt: #ffffff;
+    --color-capacity-txt: #1fb919;
+    --color-capacity-block-bg: #1fb919;
+    --color-capacity-block-txt: #ffffff;
+
+    /* Formularios */
+    --color-input-focus: #066aff;
+    --color-input-focus-shadow: #267dff84;
+
+    /* Wrapper sorteo */
+    --color-w-sorteo:#c7e2ff;
+}
+
+.wrapper{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @media (max-width: 480px) {
+        max-width: 480px;
+    }
+    @media (min-width: 480px) and (max-width: 768px) {
+        max-width: 768px;
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+        max-width: 1024px;
+    }
+    @media (max-width: 1440px) {
+        max-width: 1440px;
+    }
+}
+
+.header{
+    border-bottom: 1px solid var(--color-txt-secondary);
+    margin-bottom: 32px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.w-nav{
+    padding: 12px 0;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    .w-logo{
+        @media (max-width: 768px) {
+            align-self: flex-start;
+        }
+    }
+    
+    .principal-nav{
+        @media (max-width: 768px) {
+            display: none; /* En el enunciado no aparece el nav --> Lo escondemos */
+        }
+    }
+
+    .principal-nav__list{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 8px;
+
+        .nav-element{
+            height: 50px;
+            width: 100px;
+            padding: 3px;
+            background-color: transparent;
+            border: none;
+            border-radius: 10px;
+            align-content: center;
+            text-align: center;
+        
+            a{
+                text-decoration: none;
+                color: var(--color-txt-primary);
+                &:hover{
+                    color: var(--color-txt-secondary);
+                }
+                &:focus{ /* Para que podamos seleccionarlo sin tener que utilizar el ratón */
+                    color: var(--color-txt-secondary);
+                }
+            }
+        
+            &.highlight{
+                border: 2px solid var(--color-btn-secondary-bg);
+            }
+        }
+    }
+}
+
+.articulo{
+    display: flex;
+    gap: 20px;
+
+    .articulo__img{
+        flex-basis: 35%;
+        position: relative;
+
+        @media (max-width: 768px) {
+            align-self: center;
+        }
+    }
+    .articulo__content{
+        flex-basis: 65%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    
+        .articulo-compra{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+    
+            h2{
+                font-size: 2rem;
+            }
+        }
+    
+        .articulo-info{
+            display: grid;
+            grid-template-areas: 
+            'envio devolucion pago';
+            gap: 20px;
+
+            @media (max-width: 480px) {
+                grid-template-areas: 
+                'envio'
+                'devolucion'
+                'pago';
+            }
+
+            @media (min-width: 480px) and (max-width: 768px) {
+                grid-template-areas: 
+                'envio devolucion'
+                'pago pago';
+            }
+            
+
+            &.envio{
+                grid-area: envio;
+            }
+            &.devolucion{
+                grid-area: devolucion;
+            }
+            &.pago{
+                grid-area: pago;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.icon-text{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img{
+        max-width: 32px;
+        max-height: 32px;
+    }
+}
+
+.btn{
+    height: 50px;
+    width: 100px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn-primary{
+    background-color: var(--color-btn-primary-bg);
+    color: var(--color-btn-primary-bg-text);
+
+    &:hover{
+        background-color: var(--color-btn-primary-bg-hover);
+        color: var(--color-btn-primary-bg-hover-text);
+    }
+}
+
+.btn-secondary{
+    background-color: transparent;
+    color: var(--color-btn-secondary-bg-text);
+    border: 3px solid var(--color-btn-secondary-bg);
+
+    &:hover{
+        background-color: var(--color-btn-secondary-bg-hover);
+        color: var(--color-btn-secondary-bg-hover-text);
+    }
+}
+
+.w-accesorios{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .w-accesorios__elements{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    width: 32rem;
+    padding: 16px 16px;
+    border-radius: 10px;
+    border: 2px solid var(--color-btn-secondary-bg);
+
+    &:hover{
+        box-shadow: 0 0 11px var(--color-btn-secondary-shdw);
+    }
+
+    @media (max-width: 768px) {
+        width: 16rem;
+    }
+}
+
+.w-sorteo{
+    margin: 0 auto;
+    padding: 64px;
+    background-color: var(--color-w-sorteo);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 128px;
+    justify-content: space-between;
+
+    .sorteo-info{
+        flex-basis: 70%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .sorteo-form{
+        flex-basis: 30%;
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            .form-element{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 32px;
+    }
+}
+
+.form-input{
+    padding: 10px;
+    border: 2px solid var(--color-txt-secondary);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+
+    &:focus{ /* Para que podamos seleccionarlo sin tener que utilizar el ratón */
+        border-color: var(--color-input-focus);
+        box-shadow: 0 0 11px var(--color-input-focus-shadow);
+    }
+}
+
+footer{
+    border-top: 1px solid var(--color-txt-secondary);
+    margin-top: 32px;
+    padding: 16px 0;
+
+    .footer-content{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.offer-txt{
+    color: var(--color-offer-txt);
+}
+
+.block-label {
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 72px;
+    height: 32px;
+    text-align: center;
+    padding: 8px 0;
+
+    &.offer {
+        color: var(--color-offer-block-txt);
+        background-color: var(--color-offer-block-bg);
+    }
+
+    
+    &.new{
+        color: var(--color-new-block-txt);
+        background-color: var(--color-new-block-bg);
+    }
+}
+
+.storage{
+    display: inline-block;
+    padding: .5rem;
+    background: var(--color-capacity-block-bg);
+    color: var(--color-capacity-block-txt);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 16px;
+}

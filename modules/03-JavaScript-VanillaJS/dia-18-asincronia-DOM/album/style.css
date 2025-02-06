@@ -1,0 +1,9 @@
+.albums {
+    display: flex;
+    gap: 12px;
+}
+
+.albums-list,
+.albums-photo-preview {
+    flex-basis: 50%
+}

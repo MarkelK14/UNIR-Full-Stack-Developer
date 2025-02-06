@@ -1,0 +1,33 @@
+/* .padre{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+@media(min-width: 768px){
+    .padre{
+        background-color: blue;
+        flex-direction: row;
+    }
+} */
+
+.padre{
+    display: flex;
+}
+
+@media(max-width: 767px){
+    .padre{
+        flex-direction: column;
+    }
+}
+
+.hijo{
+    background-color: blue;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+/* 480px -- movil
+768px -- tablets :vertical
+1024px --tablets :horizontal
+1200px --dispositivo: escritorio */

@@ -1,0 +1,23 @@
+body{
+    font-family: 'Roboto Condensed', snas-serif;
+}
+.row{
+    display: flex;
+    gap: 12px;
+}
+
+.product{
+    position: relative;
+    border: 1px solid blue;
+}
+
+.offer{
+    display: inline-block;
+    padding: .5rem;
+    background: #e60000;
+    color: white;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}

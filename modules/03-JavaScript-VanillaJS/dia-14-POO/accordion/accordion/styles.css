@@ -1,0 +1,24 @@
+.accordion__row{
+    display: flex;
+}
+
+.accordion__title{
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.accordion__content{
+    display: none;
+}
+
+.accordion__button{
+    transition: transform 1s ease-in-out;
+}
+
+.accordion--open .accordion__content{
+    display: block;
+}
+
+.accordion--open .accordion__button{
+    transform: rotate(180deg);
+}

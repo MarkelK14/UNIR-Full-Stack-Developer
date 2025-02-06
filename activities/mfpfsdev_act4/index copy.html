@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agoodshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__inner">
+          <span class="heading-3">agoodshop</span>
+          <nav class="header__w-menu">
+            <ul class="header__menu">
+              <li><a href="">Tienda</a></li>
+              <li><a href="">Accesorios</a></li>
+              <li><a href="">Soporte</a></li>
+              <li><a href="" class="btn">Contactar</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrapper">
+      <section class="carrito">
+        <table class="table__products">
+          <thead class="table__products-head">
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Total</th>
+          </thead>
+          <tbody class="table__products-body">
+            <!-- aqui va el products__table-template -->
+          </tbody>
+        </table>
+        <div class="ticket">
+          <h2 class="heading-5">Total</h2>
+          <table class="table__ticket">
+            <tbody class="table__ticket-body">
+              <!-- aqui va el products__ticket-template -->
+            </tbody>
+            <tfoot class="table__ticket-foot">
+              <tr>
+                <td class="table__ticket__title">TOTAL</td>
+                <td class="table__ticket__price heading-2" id="table__ticket__price"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrapper">
+        <div class="footer__inner">
+          <h3>© agoodshop</h3>
+        </div>
+      </div>
+    </footer>
+
+    <template id="products__table-template">
+      <tr>
+        <td>
+          <p class="heading-3 prodName"></p>
+          <p class="prodReference"></p>
+        </td>
+        <td>
+          <div class="quantity__input">
+            <button class="btn quantity__input-button btnSubQuantity">-</button>
+            <input type="text" class="input product-form__input productQuantity">
+            <button class="btn quantity__input-button btnAddQuantity">+</button>
+          </div>
+        </td>
+        <td class="prodPrice"></td>
+        <td class="prodSubtotal"></td>
+      </tr>
+    </template>
+
+    <template id="products__ticket-template">
+      <tr>
+        <td class="table__ticket__title"></td>
+        <td class="table__ticket__price"></td>
+      </tr>
+    </template>
+
+    <script src="script/Carrito.js"></script>
+    <script src="script/Producto.js"></script>
+    <script src="script/script.js"></script>
+  </body>
+</html>

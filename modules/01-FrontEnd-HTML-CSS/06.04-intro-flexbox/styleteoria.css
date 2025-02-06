@@ -1,0 +1,15 @@
+.container{
+    background-color: #cecece;
+    display: flex;
+    height: 400px;
+}
+
+.caja{
+    border: 1px solid red;
+    background-color: #ececec;
+    padding: 1rem;
+}
+
+/* .especial{
+    flex-grow: 2;
+} */

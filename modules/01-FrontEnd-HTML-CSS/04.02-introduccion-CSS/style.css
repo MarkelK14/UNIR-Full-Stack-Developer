@@ -1,0 +1,10 @@
+body  {
+    background-color: blue;
+    color: white;
+}
+
+.caja{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}

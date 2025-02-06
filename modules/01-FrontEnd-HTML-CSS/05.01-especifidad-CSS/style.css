@@ -1,0 +1,33 @@
+/* Selector Specifity: (id, clase, elemento) */
+
+#the-button{
+    background-color: blueviolet;
+}
+
+.btn.btn-special{
+    background-color: green;
+}
+
+button{
+    background-color: aqua;
+}
+
+a.btn{
+    background-color: orange;
+}
+btn.btn{
+    background-color: deeppink;
+}
+
+.btn{
+    display: inline-block;
+    background-color: red !important;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.btn{
+    background-color: blue !important;
+}

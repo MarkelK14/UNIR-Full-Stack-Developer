@@ -1,0 +1,24 @@
+.mi-tabla .highlight{
+    background-color: red;
+}
+
+.mi-tabla { /* nesting  */
+    .highlight-2{
+        background-color: blue;
+    }
+
+    .highlight-2:hover{
+        background-color: aquamarine;
+    }
+}
+
+.mi-tabla { /* nesting  */
+    .highlight-3{
+        background-color: gray;
+
+        &:hover{ /* el & coge lo de su padre, es como un copy paste  */
+            background-color: black;
+            color: white;
+        }
+    }
+}
