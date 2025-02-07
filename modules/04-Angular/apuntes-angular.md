@@ -11,11 +11,9 @@
   - [5. Creación de interfaces](#5-creación-de-interfaces)
   - [6. Comunicación entre componentes](#6-comunicación-entre-componentes)
     - [Interpolación](#interpolación)
-    - [Signal](#signal)
-      - [Signal](#signal-1)
+    - [Signals](#signals)
+      - [Signal](#signal)
       - [WriteableSignal](#writeablesignal)
-      - [signal.set()](#signalset)
-      - [signal.update()](#signalupdate)
   - [7. Implantación de interfaces](#7-implantación-de-interfaces)
   - [8. Gestión de eventos](#8-gestión-de-eventos)
     - [Selector de ciudad](#selector-de-ciudad)
@@ -25,6 +23,13 @@
     - [Inputs](#inputs)
     - [Outputs](#outputs)
   - [11. Signals](#11-signals)
+    - [input()](#input)
+    - [model()](#model)
+      - [Diferencias entre WriteableSignal y model()](#diferencias-entre-writeablesignal-y-model)
+    - [computed()](#computed)
+    - [effect()](#effect)
+    - [Funciones de los signals](#funciones-de-los-signals)
+      - [.required()](#required)
 
 ## 1. Instalación y descargas
 
@@ -119,76 +124,55 @@ export class MainComponent {
 <p> Contador: {{contador}} </p>
 ```
 
-### Signal
-Vamos a montar un contador, donde por cada segundo que pasa sumamos 1
-```typescript
-import { signal } from '@angular/core';
-// {...}
-export class MainComponent {
-  contador = signal <number> (0)
-
-  ngOnInit(){
-    setInterval(() => {
-      this.contador.set(this.contador + 1)
-    })
-  }
-}
-```
-```html
-<p> Contador: {{contador()}} </p>
-```
-
-Como podemos apreciar, a la hora de sacar el signal en el HTML, es una función.
-También podemos hacer un ```WriteableSignal``` para que sea editable:
-
-```typescript
-// Import
-import { signal, WritableSignal } from '@angular/core';
-// {...}
-export class MainComponent {
-  contador: WriteableSignal <number> = signal (0)
-
-  ngOnInit(){
-    setInterval(() => {
-      this.contador.update(this.contador + 1)
-    })
-  }
-}
-```
-```html
-<p> Contador: {{contador()}} </p>
-```
-En este caso, no se hace un ```set```, si no un ```update```. Existen diferencias entre hacer un ```signal``` y ```.set()``` o un ```WriteableSignal``` y ```.update()```.
-
+### Signals
+Existen varios tipos de signals. Aquí hablaremos brevemente de ellos, pero en el punto [11. Signals](#11-signals) hablaremos más en profundidad.
 
 #### Signal
-Normalmente los signals son de lectura. Estos no tienen ```.set()```, solo tienen ```.update()```. Son actualizables, pero no sobrescribibles
+Normalmente los signals son de lectura.
 ```typescript
-export interface IPhoto {
-    @Input contador1 = signal <number> (0)
-    contador2 = input <number> (0)
+export class ContadorComponent {
+    contador1: Signal<numebr> = signal <number> (0)
 }
 ```
-```contador1``` y ```contador2``` son iguales
-#### WriteableSignal
-Estos tipos de signals serán de escritura. Con estos si que podemos hacer ```.set()``` y ```.update()```
-```typescript
-export interface IPhoto {
-    @Input contador1: WriteableSignal<number> = signal(0)
-    contador2 = model.required <number> (0)
-}
-```
-```contador1``` y ```contador2``` son iguales
+```contador1()``` devuelve el valor del signal, pero no podríamos modificarlo después de crearlo.
 
-#### signal.set()
-Añade un valor nuevo. Lanzaría el evento ```ngOnChanges()``` ya que se sobrescribe el valor. Es un "reseteo"
-#### signal.update()
-Actualiza el valor. No lanzaría el evento ```ngOnChanges()```.
+#### WriteableSignal
+Estos tipos de signals serán de lectura y escritura. Se podrá actualizar el valor con los métodos:
+- ```.set(nuevoValor)``` => Resetea el valor del signal al que le metamos. Reemplaza completamente el valor del signal. Lanzaría el evento ```ngOnChanges()``` ya que se sobrescribe el valor.
+- ```.update(nuevoValor)``` => Actualiza el valor del signal al que le metamos. Modifica el valor del signal usando una función.No lanzaría el evento ```ngOnChanges()``` ya que actualiza el valor, pero no lo resetea.
+
+```typescript
+export class ContadorComponent {
+    contador2: WritableSignal<number> = signal(0); // Signal mutable
+}
+```
+```contador2()``` devuelve el valor actual, y podríamos modificarlo.
+
+> [!NOTE]
+> Por ejemplo, vamos a montar un contador, donde por cada segundo que pase desde > que se activa se actualizará el valor del contador y por tanto el html:
+> 
+> ```typescript
+> // Import
+> import { signal, WritableSignal } from '@angular/core';
+> // {...}
+> export class MainComponent {
+>   contador: WriteableSignal <number> = signal (0)
+> 
+>   ngOnInit(){
+>     setInterval(() => {
+>       this.contador.update(this.contador + 1)
+>     }, 1000)
+>   }
+> }
+> ```
+> ```html
+> <p> Contador: {{contador()}} </p>
+> ```
 
 ## 7. Implantación de interfaces
 Tras crear la interfaz en la terminal, definimos lo que temdrá nuestra interfaz y la implementamos donde queramos. Por ejemplo:
 
-iphoto.interface.ts:
+_iphoto.interface.ts:_
 ```typescript
 export interface IPhoto {
     id?:number; // ? => hace que sea opcional
@@ -197,7 +181,7 @@ export interface IPhoto {
 }
 ```
 
-TS:
+_galeria.component.ts:_
 ```typescript
 import { IPhoto } from '../../interfaces/iphoto.interface';
 // {...}
@@ -223,7 +207,7 @@ Al hacer click en el componente (también puede ser un botón) se ejecuta miFunc
 
 Ejemplo de gestión de evento ```onChange``` de un ```select```, utilizando interpolación:
 
-HTML:
+_app.component.html:_
 ```html
 <select (change) = "selectCity($event)">
     <option value="">Selecciona una ciudad</option>
@@ -234,7 +218,7 @@ HTML:
 <h3>Ciudad escogida: {{ciudadSeleccionada}}</h3>
 ```
 
-TS:
+_app.component.ts:_
 ```typescript
 // {...}
 export class AppComponent {
@@ -252,7 +236,7 @@ Como vemos en el HTML, esa ciudad se actualiza mediante interpolación.
 ### Galería de imágenes
 Esta vez vamos a ver un ejemplo de una galería de imágenes, con el evento ```click``` de un botón.
 
-HTML:
+_galeria.component.html:_
 ```html
 <figure class="galeria">
     <img [src]="arrImagenes[currentImg].url" [alt]="arrImagenes[currentImg].title">
@@ -262,7 +246,7 @@ HTML:
 </figure>
 ```
 
-iphoto.interface.ts:
+_iphoto.interface.ts:_
 ```typescript
 export interface IPhoto {
     id?:number; // ? => hace que sea opcional
@@ -271,7 +255,7 @@ export interface IPhoto {
 }
 ```
 
-TS:
+_galeria.component.ts:_
 ```typescript
 import { IPhoto } from '../../interfaces/iphoto.interface';
 // {...}
@@ -323,14 +307,14 @@ Hay funciones que se ejecutan siempre en un componente, y es inevitable que no s
 
 > Ejemplo del ```ngOnChanges()```:
 > 
-> app.component.html:
+> _app.component.html:_
 > ```html
 > <section>
 >     <app-ciclo-vida [miInput] = "edad"></app-ciclo-vida>
 > </section>
 > ```
 > 
-> app.component.ts:
+> _app.component.ts:_
 > ```typescript
 > import { CicloVidaComponent } from './components/ciclo-vida/ciclo-vida.component';
 > // {...}
@@ -345,7 +329,7 @@ Hay funciones que se ejecutan siempre en un componente, y es inevitable que no s
 > }
 > ```
 > 
-> ciclo-vida.component.ts:
+> _ciclo-vida.component.ts:_
 > ```typescript
 > import { Component, Input } from '@angular/core';
 > // {...}
@@ -371,11 +355,11 @@ Hay funciones que se ejecutan siempre en un componente, y es inevitable que no s
 ### Inputs
 Podemos tener propiedades variables y propiedades estáticas:
 
-app.component.html:
+_app.component.html:_
 ```HTML
 <app-mi-component [miPropiedadVariable] = "miVariable1" miPropiedadEstatica = "valorConcreto"></app-mi-component>
 ```
-app.component.ts:
+_app.component.ts:_
 ```typescript
 import { MiComponent } from './components/mi-component/mi-component.component';
 // {...}
@@ -384,7 +368,7 @@ export class AppComponent {
   valorConcreto: string = "";
 }
 ```
-mi.component.ts:
+_mi.component.ts:_
 ```typescript
 // {...}
 export class MiComponent {
@@ -430,6 +414,183 @@ Pasos as seguir para el Output
 
 ## 11. Signals
 
-- input()
-- model() --> writeablesignal
-- effect() --> onChange para los signals que esten metidos dentro de esta funcion
+Hay varios tipos de signals distintos
+
+### input()
+Se usa para recibir valores de inputs de un componente. Son signals de lectura, no se pueden modificar.
+
+_app.component.html:_
+```html
+<section>
+    <app-hijo [contador1] = "numero"></app-ciclo-vida>
+</section>
+```
+
+_app.component.ts:_
+```typescript
+// {...}
+export class AppComponent {
+  numero: number = 0
+}
+```
+
+_hijo.component.html:_
+```html
+<p> {{ contador1() }}</p>
+```
+
+_hijo.component.ts:_
+```typescript
+// {...}
+export class HijoComponent {
+  // Son parecidos
+  // @Input() contador1: signal <number> (0);
+  contador1 = input<number>(); // Solo lectura, "Read Only Signal"
+}
+```
+
+- ```numero``` es una variable que tiene que estar en el ```app.component.ts```.
+- ```contador1``` es un input solo de lectura. Cogerá el valor de la variable ```numero``` del componente principal (al inicio) y no se podrá modificar.
+
+### model()
+Son signals de lectura y de escritura (como un WriteableSignal). Es un signal de dos vías, lo que significa que se puede usar tanto para recibir un valor como para modificarlo desde el componente hijo.
+
+Características:
+- Es bidireccional (two-way data binding)
+- Se usa comúnmente en formularios o componentes controlados.
+- Permite cambiar el estado local y reflejarlo en el componente padre.
+
+_app.component.html:_
+```html
+<section>
+    <app-hijo [(contador2)] = "numero"></app-ciclo-vida>
+</section>
+```
+
+_app.component.ts:_
+```typescript
+// {...}
+export class AppComponent {
+  numero: number = 0
+}
+```
+
+_hijo.component.html:_
+```html
+<p> {{ contador2() }}</p>
+```
+
+_hijo.component.ts:_
+```typescript
+// {...}
+export class HijoComponent {
+  contador2 = model<number>(0); // // Lectura y escritura, bidireccional
+}
+```
+
+```contador2``` se actualizará automáticamente en el padre cuando cambie en el hijo.
+
+#### Diferencias entre WriteableSignal<T> y model<T>()
+
+```typescript
+cont1: WriteableSignal<number> = signal(0);
+cont2 = model<number>(0);
+```
+
+|Característica|WriteableSignal (cont1)|model() (cont2)|
+| ----------- | ----------- | ----------- |
+|¿Mutable?|✅ Sí (set(), update(), mutate())|✅ Sí (set(), update(), mutate())|
+|¿Requiere valor inicial?|✅ Sí, obligatorio|❌ No, puede estar vacío|
+|¿Se puede enlazar a un input?|❌ No directamente|✅ Sí (permite two-way binding)|
+|Uso principal|Manejar estado interno del componente|Comunicar estado entre padre e hijo|
+|Se usa con input()?|❌ No|✅ Sí, es un @Input() reactivo|
+|Ejemplo de uso|contador = signal(0);|contador = model<number>();|
+
+- Un **WriteableSignal** se usa para manejar estado dentro del mismo componente. No tiene relación con el componente padre.
+  - No tiene relación con otros componentes.
+  - Se usa dentro de un solo componente.
+  - No puede recibir valores desde el padre.
+
+- **model()** es un @Input() reactivo, lo que significa que el padre debe proporcionar el valor y puede actualizarlo.
+  - Es equivalente a @Input() en Angular.
+  - Requiere que el padre pase un valor.
+  - Se puede modificar desde el hijo, y el cambio se refleja en el padre automáticamente.
+
+¿Cuándo utilizar cada uno?
+|Situación|¿Usar WriteableSignal?|¿Usar model?
+| ----------- | ----------- | ----------- |
+|Estado interno del componente|✅ Sí|❌ No|
+|Comunicación padre → hijo (@Input())|❌ No|✅ Sí|
+|Comunicación hijo → padre ([(model)])|❌ No|✅ Sí|
+
+- Cuando el estado solo le pertenece al componente => WriteableSignal
+- Cuando el padre debe controlar el estado del hijo => model()
+
+
+### computed()
+Se modifica asociado a la modificación de otro signal. Para ello necesitamos que el signal ```cont1``` sea mutable (WritableSignal). Se actualiza automáticamente
+
+```typescript
+// {...}
+export class HijoComponent {
+  cont1: WriteableSignal<number> = signal(0);
+  cont2 = computed(() =>  this.cont() * 2)
+}
+```
+
+```cont2``` solo se ejecuta cuando el ```cont1``` se modifica / ```cont2``` solo se modifica cuando el ```cont1``` se modifica
+
+
+### effect()
+Se ejecuta en el contructor. Solo se ejecuta para las variables que metamos dentro de la función.
+
+```typescript
+// {...}
+export class HijoComponent {
+  cont1: WriteableSignal<number> = signal(0);
+  cont2 = computed(() =>  this.cont() * 2)
+
+  constructor(){
+    effect(() => {
+      console.log(`El valor de cont1 es ${cont1}`)
+    })
+  }
+}
+```
+```effect()``` solo se lanzará para el ```cont1``` porque es el que está dentro de una función. No sacará nada para el ```cont2``` porque no lo tiene metido dentro del ```effect()```.
+
+### Funciones de los signals
+
+#### .required()
+Cuando usamos input() en un componente hijo, el valor que recibe puede ser opcional.
+Sin embargo, si queremos que el input sea obligatorio (es decir, que Angular lance un error si el padre no lo proporciona), podemos usar required().
+
+Ejemplo sin required() (opcional):
+
+```typescript
+// {...}
+export class HijoComponent {
+  nombre = input<string>(); // ❌ Si el padre no lo pasa, será undefined
+}
+```
+```html
+<app-hijo></app-hijo> <!-- No hay error si no pasamos "nombre" -->
+```
+> [!WARNING]
+> Si el padre no pasa el ```nombre```, el componente hijo mostrará ```undefined``` sin advertencias.
+
+Si queremos forzar que el padre pase un valor, usamos ```required()```:
+```typescript
+// {...}
+export class HijoComponent {
+  nombre = input<string>().required(); // 🔥 Requiere que el padre pase un valor
+}
+```
+```html
+<app-hijo nombre="Angular"></app-hijo> <!-- ✅ Correcto -->
+<app-hijo></app-hijo> <!-- ❌ ERROR en tiempo de ejecución -->
+```
+Si el padre no pasa ```nombre```, Angular lanzará un error indicando que falta un valor obligatorio.
+
+> [!NOTE]
+> Si el signal es de tipo model hay que ponerle ```.required()``` obligatoriamente (se le pasa por variable).
