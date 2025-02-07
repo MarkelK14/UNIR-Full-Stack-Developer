@@ -77,15 +77,15 @@ Al ejecutar el comando, Angular nos hace algunas preguntas:
 ## 4. Creación de componentes
 Ejecutar el siguiente comando en la carpeta de la app:
 ```console
-ng genearate component components/[nombreComponente] [--skip-test]
+ng genearate component components/[nombreComponente] [--skip-tests]
 ```
 
 - ```[nombreComponente]``` => Nombre del componente que queremos crear
-- ```[--skip-test]``` => Opcional. Es para evitar que Angular nos cree el fichero .spec.ts, esquivar los tests unitarios
+- ```[--skip-tests]``` => Opcional. Es para evitar que Angular nos cree el fichero .spec.ts, esquivar los tests unitarios
 
 También existe una "versión corta" de este comando:
 ```console
-ng g c components/[nombreComponente] [--skip-test]
+ng g c components/[nombreComponente] [--skip-tests]
 ```
 
 ## 5. Creación de interfaces

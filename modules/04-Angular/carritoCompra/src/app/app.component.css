@@ -1,0 +1,20 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .flex section {
+    width: 100%;
+    background-color: #ceeffa;
+
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media(min-width: 600px) {
+    .flex {
+      flex-direction: row;
+    }
+}
+  

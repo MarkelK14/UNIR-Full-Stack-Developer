@@ -1,0 +1,11 @@
+.quantity {
+    padding: 20px;
+    border: 1px solid black;
+    margin: 20px;
+    background-color: #b9daff;
+}
+
+/* applies border to the table */
+table,th,td {
+    border: 1px solid black;
+}
