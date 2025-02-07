@@ -93,7 +93,7 @@ git merge [ramaConCambio]
 
 Clonar repositorio remoto existente:
 ```
-git colne [urlRepositorio]
+git clone [urlRepositorio]
 ```
 
 Actualizar commits de repositorio remoto:
