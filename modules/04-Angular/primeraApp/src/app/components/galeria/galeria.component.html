@@ -1,0 +1,5 @@
+<figure class="galeria">
+  <img [src]="arrImagenes[currentImg].url" [alt]="arrImagenes[currentImg].title">
+  <figcaption>{{arrImagenes[currentImg].title}}</figcaption>
+  <button (click)="prev()">Anterior</button><button (click)="next()">Siguiente</button>
+</figure>
