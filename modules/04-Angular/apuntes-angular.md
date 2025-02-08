@@ -61,7 +61,7 @@ Para pararlo, simplemente tenemos que usar ```Ctrl + C```
 
 ## 3. Creación de Apps
 Ejecutar el siguiente comando en la carpeta donde queramos crear la app:
-```console
+```
 ng new [nombreApp]
 ```
 
@@ -73,6 +73,11 @@ ng new [nombreApp]
 Al ejecutar el comando, Angular nos hace algunas preguntas:
 - _"Which stylesheet format would you like to use?"_ => CSS
 - _"Do you want to enable Server-Side Rendering (SSR) and Static Stite Generation (SSG/Prerendering)?"_ => N
+
+Si queremos que Angular no nos cree la carpeta .git ejecutaremos el comando:
+```
+ng new [nombreApp] --skip-git
+```
 
 ## 4. Creación de componentes
 Ejecutar el siguiente comando en la carpeta de la app:

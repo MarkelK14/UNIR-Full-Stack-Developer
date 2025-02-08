@@ -4,16 +4,44 @@
 - [COMANDOS GIT](#comandos-git)
   - [Índice](#índice)
   - [Repositorio local](#repositorio-local)
+  - [Repositorio remoto](#repositorio-remoto)
+  - [Enlazar repositorio local - remoto](#enlazar-repositorio-local---remoto)
   - [Estado de cambios](#estado-de-cambios)
   - [Staging Area](#staging-area)
   - [Commit](#commit)
   - [Ramas](#ramas)
-  - [Repositorio remoto](#repositorio-remoto)
 
 ## Repositorio local
-Iniciaar repositorio local:
+Iniciar repositorio local:
 ```
 git init [nombreRepositorio]
+```
+
+## Repositorio remoto
+Actualizar commits de repositorio remoto:
+```
+git fetch
+```
+
+Actualizar el repositorio local respecto al remoto (descargarse la versión actual del remoto):
+```
+git pull origin [nombreRama]
+```
+
+Subir cambios a repositorio remoto:
+```
+git push origin [nombreRama]
+```
+
+## Enlazar repositorio local - remoto
+Enlazar un repositorio local con un repositorio remoto:
+```
+git remote add origin [urlRepositorio]
+```
+
+Clonar repositorio remoto existente:
+```
+git clone [urlRepositorio]
 ```
 
 ## Estado de cambios
@@ -55,7 +83,7 @@ git log
 ```
 
 ## Ramas
-Ver en que rama estamos y listado de ramas:
+Ver listado de ramas y la rama actual(*):
 ```
 git branch
 ```
@@ -88,25 +116,3 @@ git merge [ramaConCambio]
 > Para hacer esto hay que posicionarse en la rama donde queremos traer los cambios.
 > 
 > Por ejemplo, si hemos hecho los cambios en la rama myBranch y queremos llevarlos a la rama Main, tendremos que posicionarnos en la rama Main y ejecutar ```git merge myBranch```
-
-## Repositorio remoto
-
-Clonar repositorio remoto existente:
-```
-git clone [urlRepositorio]
-```
-
-Actualizar commits de repositorio remoto:
-```
-git fetch
-```
-
-Actualizar el repositorio local respecto al remoto (descargarse la versión actual del remoto):
-```
-git pull origin [nombreRama]
-```
-
-Subir cambios a repositorio remoto:
-```
-git push origin [nombreRama]
-```
