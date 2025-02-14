@@ -1,1 +1,35 @@
-<p>listado-noticias works!</p>
+<ul class="card-list">
+    @for (noticia of noticias; track noticia) {
+        <li>
+            <article class="card">
+                <figure class="card__figure">
+                    <img class="card__img" src="{{noticia.imagen}}" alt="{{noticia.titulo}}">
+                    <!-- <figcaption class="noticia__figure-figcaption">{{noticia.titulo}}</figcaption> -->
+                </figure>
+                <h3 class="card__title">{{noticia.titulo}}</h3>
+            </article>
+        </li>
+    }
+    </ul>
+    
+    
+    <!-- @for (noticia of noticias; track noticia) {
+    
+        <article class="noticia">
+            <figure class="noticia__figure">
+                <img class="noticia__figure-img" src="{{noticia.imagen}}" alt="{{noticia.titulo}}">
+                <figcaption class="noticia__figure-figcaption">{{noticia.titulo}}</figcaption>
+            </figure>
+            <div class="noticia__content">
+                <div class="noticia__content__cabecera">
+                    <h3 class="noticia__title">{{noticia.titulo}}</h3>
+                    <p class="noticia__date">{{noticia.fecha}}</p>
+                </div>
+                <div class="noticia__body">
+                    @for (line of noticia.cuerpo.split('\n'); track line) {
+                        <p>{{ line }}</p>
+                    }
+                </div>
+            </div>
+        </article>
+    } -->
