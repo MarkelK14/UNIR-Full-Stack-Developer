@@ -5,7 +5,7 @@
   <div class="flex">
     <section class="form-noticias">
       <!-- form noticias -->
-      <app-form-noticia></app-form-noticia>
+      <app-form-noticia (sendNoticia)="getDataForm($event)"></app-form-noticia>
     </section>
     <section class="listado-noticias">
       <!-- listado noticias -->

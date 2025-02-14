@@ -1,0 +1,63 @@
+:root{
+    --color-txt-primary: #000000;
+    --color-txt-secondary: #cecece;
+
+    /* Botones */
+    --color-btn-primary-bg: #0066ff;
+    --color-btn-primary-bg-text: white;
+    --color-btn-primary-bg-hover: #0245a8;
+    --color-btn-primary-bg-hover-text: white;
+
+    /* Formularios */
+    --color-input-focus: #066aff;
+    --color-input-focus-shadow: #267dff84;
+}
+
+.form {
+    padding: 25px;
+}
+
+.form div {
+    margin: 10px 0px;
+}
+
+.form-input{
+    display: block;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+
+    &:focus{ 
+        border-color: #066aff;
+        box-shadow: 0 0 11px #267dff84;
+    }
+
+    &.input-date{
+        width: auto;
+    }
+}
+
+.btn{
+    height: 50px;
+    width: 100px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary{
+    background-color: #0066ff;
+    color: white;
+
+    &:hover{
+        background-color: #0245a8;
+        color: white;
+    }
+}

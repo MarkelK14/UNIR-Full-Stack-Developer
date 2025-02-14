@@ -1,1 +1,21 @@
-<p>form-noticia works!</p>
+<div class="form">
+    <h2>Formulario de inserción</h2>
+    <hr>
+    <div>
+      <label for="title">Titulo</label>
+      <input class="form-input" id="title" type="text" maxlength="100" placeholder="Títular de la noticia" [(ngModel)]="newNoticia.titulo">
+    </div>
+    <div>
+      <label for="body">Cuerpo</label>
+      <textarea class="form-input" id="body" type="text" rows="10" placeholder="Cuerpo de la noticia" [(ngModel)]="newNoticia.cuerpo"></textarea>
+    </div>
+    <div>
+      <label for="image">Imagen</label>
+      <input class="form-input" id="image" type="text" placeholder="URL de la imagen" [(ngModel)]="newNoticia.imagen">
+    </div>
+    <div>
+      <label for="date">Fecha</label>
+      <input class="form-input input-date" id="date" type="date" placeholder="Fecha de la noticia" [(ngModel)]="newNoticia.fecha">
+    </div>
+    <button class="btn btn-primary" (click)="getNoticia()">Guardar</button>
+</div>
