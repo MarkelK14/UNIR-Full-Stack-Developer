@@ -8,6 +8,18 @@ import { INoticia } from '../../interfaces/inoticia.interface';
   styleUrl: './listado-noticias.component.css'
 })
 export class ListadoNoticiasComponent {
-  @Input() noticias: INoticia[] = [];
+  @Input() misNoticias: INoticia[] = [];
+  noticias: INoticia[] = [];
   texto: string = "";
+  categorias: string[] = ['Tecnología', 'Política', 'Deportes'];
+
+  ngOnInit() {
+    this.noticias = this.misNoticias;
+    console.log('noticias', this.noticias);
+    console.log('misNoticias', this.misNoticias);
+  }
+
+  capturarCategoria(event: any) {
+    this.noticias = this.misNoticias.filter(noticia => noticia.categoria.includes(event.target.value))
+  }
 }

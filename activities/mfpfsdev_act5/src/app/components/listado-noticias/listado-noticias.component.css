@@ -26,6 +26,13 @@
     }
 }
 
+.noticias__cabecera{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
 .card {
     background: #ffffff;
     border-radius: 10px;

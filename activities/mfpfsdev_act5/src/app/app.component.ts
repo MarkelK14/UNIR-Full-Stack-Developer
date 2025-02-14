@@ -19,6 +19,7 @@ export class AppComponent {
     .then ((res) => res.json())
     .then((data) => {
       this.arrNoticias = data;
+      console.log('data', this.arrNoticias);
     })
   }
 
