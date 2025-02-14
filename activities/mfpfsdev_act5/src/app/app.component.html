@@ -1,8 +1,8 @@
-<header>
+<header class="header">
     <h1>Noticias</h1>
-    <hr>
-  </header>
-  <main class="flex">
+</header>
+<main>
+  <div class="flex">
     <section class="form-noticias">
       <!-- form noticias -->
       <app-form-noticia></app-form-noticia>
@@ -10,5 +10,10 @@
     <section class="listado-noticias">
       <!-- listado noticias -->
       <app-listado-noticias [noticias]="arrNoticias"></app-listado-noticias>
-    </section>
+    </section>    
+  </div>
+
+  <footer class="footer">
+    <p>¡Suscribete a nuestra newsletter!</p>
+  </footer>
 </main>

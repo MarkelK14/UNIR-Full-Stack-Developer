@@ -1,3 +1,18 @@
+.header{
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.footer{
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
 .flex {
     display: flex;
     flex-direction: column;
@@ -7,7 +22,6 @@
   .flex section {
     width: 100%;
     background-color: #ceeffa;
-
     display: flex;
     flex-direction: column;
   }
@@ -25,4 +39,5 @@
 
 .listado-noticias{
   flex-basis: 70%;
+  height: calc(100vh - 40px - 40px); /* 40px por el header y 40px por el footer */
 }
