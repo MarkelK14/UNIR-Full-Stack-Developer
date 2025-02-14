@@ -21,6 +21,11 @@
     margin: 10px 0px;
 }
 
+.form-cabecera{
+    border-bottom: 1px solid #cecece;
+    padding: 10px;
+}
+
 .form-input{
     display: block;
     padding: 10px;

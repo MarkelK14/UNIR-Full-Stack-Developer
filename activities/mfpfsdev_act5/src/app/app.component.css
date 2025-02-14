@@ -39,5 +39,6 @@
 
 .listado-noticias{
   flex-basis: 70%;
-  height: calc(100vh - 40px - 40px); /* 40px por el header y 40px por el footer */
+  /* height: calc(100vh - 40px - 40px); */
+  height: fit-content;
 }

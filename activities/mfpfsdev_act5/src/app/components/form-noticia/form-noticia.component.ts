@@ -10,17 +10,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormNoticiaComponent {
   newNoticia: INoticia = {titulo: '', categoria: '', imagen: '', cuerpo: '', fecha: ''};
-  @Output() sendNoticia = new EventEmitter<INoticia>();
+  @Output() sendNoticia: EventEmitter<INoticia> = new EventEmitter();
 
   getNoticia(): void {
 
-    console.log(this.newNoticia);
-
-    if (this.newNoticia.titulo === '' || this.newNoticia.imagen === '' || this.newNoticia.cuerpo === '' || this.newNoticia.fecha === '') {
+    if (this.newNoticia.categoria === '' || this.newNoticia.titulo === '' || this.newNoticia.imagen === '' || this.newNoticia.cuerpo === '' || this.newNoticia.fecha === '') {
       alert('Todos los campos son obligatorios');
       return;
     }else{
       this.sendNoticia.emit(this.newNoticia);
+      console.log('newNoticia', this.newNoticia);
+      console.log('sendNoticia', this.sendNoticia);
       this.newNoticia = {titulo: '', categoria: '', imagen: '', cuerpo: '', fecha: ''};      
     }
 

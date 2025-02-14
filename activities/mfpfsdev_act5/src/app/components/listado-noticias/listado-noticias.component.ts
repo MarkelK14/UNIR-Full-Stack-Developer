@@ -19,7 +19,14 @@ export class ListadoNoticiasComponent {
     console.log('misNoticias', this.misNoticias);
   }
 
+  ngDoCheck() {
+    // this.noticias = this.misNoticias.filter(noticia => noticia.categoria.includes(''))
+    console.log('ListadoNoticiasComponent.ngDoCheck')
+  }
+
   capturarCategoria(event: any) {
+    console.log('capturarCategoria.noticias', this.noticias);
+    // this.noticias = this.misNoticias.filter(noticia => noticia.categoria.includes(event.target.value))
     this.noticias = this.misNoticias.filter(noticia => noticia.categoria.includes(event.target.value))
   }
 }
