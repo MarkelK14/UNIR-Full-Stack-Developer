@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { INoticia } from '../../interfaces/inoticia.interface';
 import { ModalNoticiaComponent } from "../modal-noticia/modal-noticia.component";
+import { MostrarNoticiaComponent } from '../mostrar-noticia/mostrar-noticia.component';
 
 @Component({
   selector: 'app-listado-noticias',
-  imports: [ModalNoticiaComponent],
+  imports: [ModalNoticiaComponent, MostrarNoticiaComponent],
   templateUrl: './listado-noticias.component.html',
   styleUrl: './listado-noticias.component.css'
 })
@@ -16,21 +17,26 @@ export class ListadoNoticiasComponent {
 
 
   // ---------------------- MODAL ----------------------
-  openModal(): void{
-    console.log('openModal - pre', this.modalSwitch);
-    this.modalSwitch = true;
-    console.log('openModal - post', this.modalSwitch);
+  // openModal(): void{
+  //   console.log('openModal - pre', this.modalSwitch);
+  //   this.modalSwitch = true;
+  //   console.log('openModal - post', this.modalSwitch);
 
-    // console.log('event', event);
+  //   // console.log('event', event);
 
-    // this.sendNoticia.emit(event);
-  }
-  closeModal(): void{
-    this.modalSwitch = false;
-  }
+  //   // this.sendNoticia.emit(event);
+  // }
+  // closeModal(): void{
+  //   this.modalSwitch = false;
+  // }
 
-  getCloseAction(event: boolean): void {
-    this.modalSwitch = event;
+  // getCloseAction(event: boolean): void {
+  //   this.modalSwitch = event;
+  // }
+
+  selectNoticia(noticia: INoticia): void {
+    this.selectedNoticia = noticia;
+    // this.modalSwitch = true;
   }
 
 }

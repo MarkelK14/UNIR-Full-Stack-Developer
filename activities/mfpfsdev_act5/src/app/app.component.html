@@ -4,6 +4,7 @@
 </header>
 <main>
 <div class="flex">
+  
   <section class="form-noticias">
     <!-- form noticias -->
     <app-form-noticia (sendNoticia)="getDataForm($event)"></app-form-noticia>
@@ -14,9 +15,6 @@
   </section>    
 </div>
 
-<!-- @if (modalSwitch){
-  <app-modal-noticia (sendCloseAction)="getCloseAction($event)"></app-modal-noticia>
-} -->
 
 <footer class="footer">
   <p>¡Suscribete a nuestra newsletter!</p>

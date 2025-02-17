@@ -2,10 +2,11 @@ import { Component } from "@angular/core";
 import { INoticia } from "./interfaces/inoticia.interface";
 import { ListadoNoticiasComponent } from "./components/listado-noticias/listado-noticias.component";
 import { FormNoticiaComponent } from "./components/form-noticia/form-noticia.component";
+import { MostrarNoticiaComponent } from "./components/mostrar-noticia/mostrar-noticia.component";
 
 @Component({
   selector: "app-root",
-  imports: [ListadoNoticiasComponent, FormNoticiaComponent],
+  imports: [ListadoNoticiasComponent, FormNoticiaComponent, MostrarNoticiaComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css"
 })
