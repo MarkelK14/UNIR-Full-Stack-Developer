@@ -68,8 +68,6 @@ export class AppComponent {
   // }
 
   getDataForm(event: INoticia): void {
-    console.log('event', event);
     this.arrNoticias = [...this.arrNoticias, event];
-    console.log('arrNoticias', this.arrNoticias);
   }
 }

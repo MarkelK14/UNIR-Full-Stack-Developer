@@ -19,8 +19,8 @@ export class FormNoticiaComponent {
       return;
     }else{
       this.sendNoticia.emit(this.newNoticia);
-      console.log('newNoticia', this.newNoticia);
-      console.log('sendNoticia', this.sendNoticia);
+      // console.log('newNoticia', this.newNoticia);
+      // console.log('sendNoticia', this.sendNoticia);
       this.newNoticia = {titulo: '', categoria: '', imagen: '', cuerpo: '', fecha: ''};      
     }
 
