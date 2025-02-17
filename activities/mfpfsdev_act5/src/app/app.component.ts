@@ -1,89 +1,39 @@
 import { Component } from "@angular/core";
-import { INoticia } from "./interfaces/inoticia.interface";
-import { ListadoNoticiasComponent } from "./components/listado-noticias/listado-noticias.component";
-import { FormNoticiaComponent } from "./components/form-noticia/form-noticia.component";
-import { MostrarNoticiaComponent } from "./components/mostrar-noticia/mostrar-noticia.component";
+import { NewPostComponent } from "./components/new-post/new-post.component";
+import { PostListComponent } from "./components/post-list/post-list.component";
+import { IPost } from "./interfaces/ipost.interface";
 
 @Component({
   selector: "app-root",
-  imports: [ListadoNoticiasComponent, FormNoticiaComponent, MostrarNoticiaComponent],
+  imports: [NewPostComponent, PostListComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css"
 })
 export class AppComponent {
-  // arrNoticias: INoticia[] = [];
-  arrNoticias: INoticia[] = [
+  arrPosts: IPost[] = [
     {
-      "titulo": "Elon Musk Intenta Cambiar el Logo de X en Vivo y Bloquea su Propia Cuenta",
-      "categoria": "Tecnología",
-      "imagen": "https://noticiasdemexico.com.mx/wp-content/uploads/2025/02/x-frandroid-x-elon-musk.jpg",
-      "cuerpo": "Elon Musk, siempre en busca de innovaciones, decidió cambiar el logo de X (antes Twitter) durante una transmisión en vivo en la plataforma Twitch, pero terminó bloqueando accidentalmente su propia cuenta en el proceso. 'Voy a hacer esto personalmente, es fácil', dijo con confianza, antes de entrar a la configuración avanzada del sitio. Sin embargo, tras varios clics erróneos y una confusa secuencia de comandos, la pantalla mostró: 'Acceso denegado. Contacte al administrador'. El problema: él era el administrador. Durante varios minutos, los espectadores vieron a Musk teclear frenéticamente, fruncir el ceño y murmurar: 'Esto no puede estar pasando'. Finalmente, tuvo que llamar a un ingeniero de X para recuperar su cuenta. El incidente desató memes de Musk hackeándose a sí mismo, mientras él lo tomaba con humor: 'Bueno, al menos no tuiteé algo raro mientras dormía... esta vez'.",
-      "fecha": "2021-01-01"
+      "username": "Ellon Musk",
+      "title": "Creo que acabo de arreglar X 🚀💡",
+      "imageURL": "https://i.blogs.es/2f36bc/musk2/500_333.webp",
+      "body": "Estaba pensando… ¿y si eliminamos los likes? Así la gente no busca aprobación, solo postea por amor al arte. Pero luego pensé, ¿y si también eliminamos los posts? Solo pensamientos telepáticos entre usuarios verificados. Esperen… ¿y si eliminamos a los usuarios? X sería puro potencial, una red social perfecta, sin peleas ni bots. Lo llamaré X-Infinity. P.D.: No se preocupen, la suscripción premium seguirá costando $8.",
+      "date": "15/01/2025"
     },
     {
-      "titulo": "Zuckerberg Olvida la Contraseña de Administrador de Meta y Llama a Soporte",
-      "categoria": "Tecnología",
-      "imagen": "https://elceo.com/wp-content/uploads/2023/12/mark_meta_.jpg",
-      "cuerpo": "Mark Zuckerberg, la única persona con acceso a la contraseña de administrador de Meta, olvidó su clave y bloqueó el sistema tras tres intentos fallidos. Sin otra opción, tuvo que llamar al soporte técnico de su propia empresa. Al principio, los empleados pensaron que era una broma, hasta que él, visiblemente frustrado, pidió ayuda en serio. Tras un riguroso proceso de verificación, logró restablecer el acceso. La anécdota se filtró y desató memes imaginándolo resolviendo captchas o respondiendo su propia pregunta de seguridad. Meta no ha confirmado ni desmentido el incidente.",
-      "fecha": "2021-01-02"
+      "username": "Mark Zuckerberg",
+      "title": "Voy a hacer que todos usen Facebook a la fuerza 😎",
+      "imageURL": "https://media.es.wired.com/photos/6387e72ca6d3cf129953d7cc/16:9/w_2560%2Cc_limit/Why-Meta-Is-Tanking-Mark-Zuckerberg-Busines-1178141588.jpg",
+      "body": "Estaba pensando… ¿y si obligamos a todos a tener Facebook? Literalmente. Sin cuenta, no puedes entrar a tu casa, usar el baño o comprar pan. Los bebés nacen con una cuenta preactivada y su primer post es el llanto inicial. Si intentas borrar tu perfil, un dron de Meta te sigue y te proyecta memes en la cara hasta que te rindas. Lo llamaré MetaTotal. P.D.: La suscripción premium te deja cerrar los ojos por 5 minutos al día.",
+      "date": "11/01/2025"
     },
     {
-      "titulo": "Jeff Bezos compra AliExpress: 'Si no puedes con tu enemigo, únete a él'",
-      "categoria": "Tecnología",
-      "imagen": "https://content.imageresizer.com/images/memes/Amazons-Jeff-Bezos-meme-4.jpg",
-      "cuerpo": "En un movimiento inesperado, Jeff Bezos ha anunciado la compra de AliExpress, la famosa plataforma china de comercio electrónico. Según fuentes cercanas, la decisión se basó en una estrategia simple pero efectiva: rendirse ante los precios ridículamente bajos. 'Intentamos competir, pero vender un dron, tres camisetas y un juego de herramientas por 5 dólares con envío gratis simplemente es imposible', habría dicho Bezos en una reunión interna. El magnate planea fusionar Amazon y AliExpress en un nuevo modelo de negocio llamado 'AliZon', donde los envíos tardarán de un día a tres meses, dependiendo de cuán barato seas. Los compradores están divididos: algunos celebran la idea de recibir paquetes sorpresa meses después de olvidarlos, mientras que otros temen que Prime ahora incluya un curso de paciencia. Por su parte, Bezos aclaró: 'Si no puedes vencer sus precios… al menos cómpralos y súbeles un poco'.",
-      "fecha": "2021-01-03"
-    },
-    {
-      "titulo": "Donald Trump Anuncia su Propia Red Social y Se Banea a Sí Mismo",
-      "categoria": "Política",
-      "imagen": "https://i.abcnewsfe.com/a/584b02f5-25d2-49f4-bf19-ccb7cd3903be/donald-trump-7-gty-gmh-240415_1713194275665_hpMain_16x9.jpg?w=1600",
-      "cuerpo": "Donald Trump lanzó 'TrumpNet', su nueva red social, prometiendo 'libertad de expresión total'. Sin embargo, tras un acalorado debate con él mismo en los comentarios, fue baneado por violar las normas de la plataforma. 'Esto es un escándalo', declaró en una conferencia de prensa, olvidando que él mismo escribió las reglas.",
-      "fecha": "2025-02-14"
-    },
-    {
-      "titulo": "Celebración Histórica del Athletic Club con la Gabarra tras la Copa del Rey",
-      "categoria": "Deportes",
-      "imagen": "https://www.noradoa.com/wordpress/wp-content/themes/yootheme/cache/b7/gabarra-athletic-celebracion-copa-rey-2024-noradoa-10-b7545435.jpeg",
-      "cuerpo": "El Athletic Club celebró su reciente victoria en la Copa del Rey de una forma histórica: ¡con la Gabarra! Miles de aficionados se reunieron para ver cómo los campeones recorrían la ría de Bilbao, en lo que muchos consideraron la mejor fiesta deportiva de la historia del club. La gabarra, adornada con banderas y cánticos, se convirtió en un símbolo de alegría y unidad para los bilbaínos.",
-      "fecha": "2025-04-07"
-    },
-    {
-      "titulo": "La Final de la Europa League se Jugará en San Mamés: El Athletic Tiene Muchas Posibilidades",
-      "categoria": "Deportes",
-      "imagen": "https://cdn.athletic-club.eus/uploads/2024/10/20241003_cronica.jpg",
-      "cuerpo": "La final de la Europa League de este año se celebrará en San Mamés, y el Athletic Club está más cerca que nunca de levantar el trofeo. Con su increíble rendimiento durante la temporada, el equipo está optimista de que, si siguen jugando así de bien, tendrán muchas posibilidades de ganar. Los aficionados ya han empezado a soñar con la fiesta en casa, ¡y la presión sobre los rivales crece cada día!",
-      "fecha": "2025-05-01"
+      "username": "Jeff Bezos",
+      "title": "¿Y si Amazon entregara los bebés? 🚼📦",
+      "imageURL": "https://forbes.es/wp-content/uploads/2022/11/jeff-bezos.jpg",
+      "body": "Estaba pensando… ¿para qué molestarse con hospitales si puedes pedir un bebé por Amazon? Eliges color de ojos, nivel de calvicie hereditaria y si quieres que venga con Prime, te lo entregamos en 24 horas con un pañal gratis. Si no te gusta, devolución gratuita en 30 días. Lo llamaré Amazon Stork. P.D.: Los suscriptores Prime pueden preordenar gemelos con 10% de descuento.",
+      "date": "04/01/2025"
     }
-  ];
-  // modalSwitch: boolean = false;
-
-
-  // ngOnInit(): void {
-  //   // Para modificar los datos: https://jsonblob.com/1339934620019515392
-  //   fetch('https://jsonblob.com/api/jsonBlob/1339934620019515392')
-  //   .then ((res) => res.json())
-  //   .then((data) => {
-  //     this.arrNoticias = data;
-  //     console.log('data', this.arrNoticias);
-  //   })
-  // }
-
-  getDataForm(event: INoticia): void {
-    this.arrNoticias = [...this.arrNoticias, event];
+];
+  getNewPost(event: IPost): void {
+    this.arrPosts = [...this.arrPosts, event];
   }
-  // getCloseAction(event: boolean): void {
-  //   this.modalSwitch = event;
-  // }
-
-
-
-
-  // // ---------------------- MODAL ----------------------
-  // openModal(): void{
-  //   this.modalSwitch = true;
-  // }
-  // closeModal(): void{
-  //   this.modalSwitch = false;
-  // }
 }

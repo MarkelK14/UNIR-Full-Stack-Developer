@@ -1,0 +1,21 @@
+<div class="posts">
+    @for (post of posts; track post; let index = $index) {
+        <article class="post">
+            <div class="post__header">
+                <img class="post__header__img" src="{{post.imageURL}}" alt="{{post.title}}">
+
+                <div class="user__post__info">
+                    <h4 class="post__username">{{post.username}}</h4>
+                    <p class="post__date">{{post.date}}</p>
+                </div>
+                
+            </div>
+            <h3 class="post__title">{{post.title}}</h3>
+            <p class="post__body">{{post.body}}</p>
+        </article>
+
+        @if(index < posts.length - 1) {
+            <hr class="post__separator">
+        }
+    }
+</div>

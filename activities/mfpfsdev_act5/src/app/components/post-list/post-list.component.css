@@ -1,0 +1,41 @@
+.posts{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post__header{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+
+.post__header__img{
+    /* border-radius: 50%;
+    object-fit: contain; */
+    clip-path: circle();
+    width: 60px;
+    height: auto;
+}
+
+.post__date{
+    font-size: .7rem;
+    color: #333;
+    font-style: italic;
+}
+
+.post__body{
+    color: #333;
+}
+
+.post__separator{
+    border-top: 1px solid #cecece;
+}

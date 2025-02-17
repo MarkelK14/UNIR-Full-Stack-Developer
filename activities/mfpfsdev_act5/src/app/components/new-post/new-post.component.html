@@ -1,0 +1,23 @@
+<div class="form">
+    <div class="form-cabecera">
+      <h2>Post a new Twist</h2>
+    </div>
+      
+    <div>
+        <label for="username">Username</label>
+        <input class="form-input" id="username" type="text" maxlength="25" placeholder="Username" [(ngModel)]="newPost.username">
+    </div> 
+    <div>
+      <label for="title">Title</label>
+      <input class="form-input" id="title" type="text" maxlength="100" placeholder="Title" [(ngModel)]="newPost.title">
+    </div>
+    <div>
+      <label for="body">Body</label>
+      <textarea class="form-input" id="body" type="text" rows="10" placeholder="Body" [(ngModel)]="newPost.body"></textarea>
+    </div>
+    <div>
+      <label for="image">Profile image URL</label>
+      <input class="form-input" id="image" type="text" placeholder="Image URL" [(ngModel)]="newPost.imageURL">
+    </div>
+    <button class="btn btn-primary" (click)="getPost()">Post it!</button>
+  </div>
