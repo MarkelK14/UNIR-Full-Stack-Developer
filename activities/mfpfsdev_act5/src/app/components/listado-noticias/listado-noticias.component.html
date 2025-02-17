@@ -15,13 +15,16 @@
       
     <section class="flex scrollable-container">
         @for (noticia of noticias; track noticia) {
-            <article class="card">
-                    <figure class="card__figure">
-                        <img class="card__img" src="{{noticia.imagen}}" alt="{{noticia.titulo}}">
-                    </figure>
-                    <h3 class="card__title">{{noticia.titulo}}</h3>
-                    <p class="card__date">{{noticia.fecha}}</p>
-                </article>
+            <article class="card" (click)="openModal()">
+                <figure class="card__figure">
+                    <img class="card__img" src="{{noticia.imagen}}" alt="{{noticia.titulo}}">
+                </figure>
+                <h3 class="card__title">{{noticia.titulo}}</h3>
+                <p class="card__date">{{noticia.fecha}}</p>
+            </article>
+        }
+        @if (modalSwitch){
+            <app-modal-noticia (sendCloseAction)="getCloseAction($event)"></app-modal-noticia>
         }
     </section>
 </div>

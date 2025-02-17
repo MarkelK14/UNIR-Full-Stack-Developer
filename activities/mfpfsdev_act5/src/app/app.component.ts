@@ -55,6 +55,7 @@ export class AppComponent {
       "fecha": "2025-05-01"
     }
   ];
+  // modalSwitch: boolean = false;
 
 
   // ngOnInit(): void {
@@ -70,4 +71,18 @@ export class AppComponent {
   getDataForm(event: INoticia): void {
     this.arrNoticias = [...this.arrNoticias, event];
   }
+  // getCloseAction(event: boolean): void {
+  //   this.modalSwitch = event;
+  // }
+
+
+
+
+  // // ---------------------- MODAL ----------------------
+  // openModal(): void{
+  //   this.modalSwitch = true;
+  // }
+  // closeModal(): void{
+  //   this.modalSwitch = false;
+  // }
 }
