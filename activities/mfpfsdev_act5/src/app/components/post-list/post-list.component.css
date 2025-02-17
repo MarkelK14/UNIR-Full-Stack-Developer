@@ -24,6 +24,7 @@
     clip-path: circle();
     width: 60px;
     height: auto;
+    object-fit: contain;
 }
 
 .post__date{
