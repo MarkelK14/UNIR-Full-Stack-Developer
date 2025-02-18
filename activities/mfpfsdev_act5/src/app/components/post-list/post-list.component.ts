@@ -9,6 +9,7 @@ import { IPost } from '../../interfaces/ipost.interface';
 })
 export class PostListComponent {
   @Input() posts: IPost[] = [];
+  borderBottom: string = '1px solid #cecece';
 
   ngOnInit() {
     console.log('posts', this.posts);

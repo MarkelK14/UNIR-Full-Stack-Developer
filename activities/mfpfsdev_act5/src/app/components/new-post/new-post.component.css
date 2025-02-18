@@ -22,7 +22,7 @@
 }
 
 .form-cabecera{
-    border-bottom: 1px solid #cecece;
+    border-bottom: 2px solid #cecece;
     padding: 0px 0px 10px 0px;
 }
 
@@ -32,7 +32,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    border: 2px solid #cecece;
+    border: 1px solid #cecece;
     border-radius: 5px;
     font-size: 1rem;
     outline: none;

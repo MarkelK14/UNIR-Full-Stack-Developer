@@ -1,21 +1,40 @@
 <div class="posts">
-    @for (post of posts; track post; let index = $index) {
-        <article class="post">
-            <div class="post__header">
-                <img class="post__header__img" src="{{post.imageURL}}" alt="{{post.title}}">
-
-                <div class="user__post__info">
-                    <h4 class="post__username">{{post.username}}</h4>
-                    <p class="post__date">{{post.date}}</p>
-                </div>
-                
-            </div>
-            <h3 class="post__title">{{post.title}}</h3>
-            <p class="post__body">{{post.body}}</p>
-        </article>
-
-        @if(index < posts.length - 1) {
-            <hr class="post__separator">
+    <div class="cabecera">
+        <h2>Timeline</h2>
+        <!-- <input type="text" class="search-input" placeholder="Search"> -->
+    </div>
+    
+    <div class="post-list">
+        @for (post of posts; track post; let index = $index; let last = $last) {
+            @if(!last) {
+                <article class="post" [style.border-bottom]="borderBottom">
+                    <div class="post__header">
+                        <img class="post__header__img" src="{{post.imageURL}}" alt="{{post.title}}">
+        
+                        <div class="user__post__info">
+                            <h4 class="post__username">{{post.username}}</h4>
+                            <p class="post__date">{{post.date}}</p>
+                        </div>
+                        
+                    </div>
+                    <h3 class="post__title">{{post.title}}</h3>
+                    <p class="post__body">{{post.body}}</p>
+                </article>
+            }@else {
+                <article class="post">
+                    <div class="post__header">
+                        <img class="post__header__img" src="{{post.imageURL}}" alt="{{post.title}}">
+        
+                        <div class="user__post__info">
+                            <h4 class="post__username">{{post.username}}</h4>
+                            <p class="post__date">{{post.date}}</p>
+                        </div>
+                        
+                    </div>
+                    <h3 class="post__title">{{post.title}}</h3>
+                    <p class="post__body">{{post.body}}</p>
+                </article>
+            }
         }
-    }
+    </div>
 </div>
