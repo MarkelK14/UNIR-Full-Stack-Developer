@@ -1,15 +1,18 @@
 .header{
-  /* background-color: plum; */
-  position: sticky;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.main{
+  padding: 10px;
 }
 
 .new-post{
-  /* background-color: coral; */
   flex-basis: 30%;
-
-  border-right: 1px solid #cecece;
+  box-shadow: 0 0 15px  #ffffff98;
+  margin: 10px;
+  top: 10;
 }
 
 .sidebar {
@@ -20,18 +23,7 @@
 }
 
 .post-list{
-  /* background-color: lightblue; */
   flex-basis: 70%;
-}
-
-.footer {
-  /* background-color: lightgreen; */
-
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 }
 
 .flex {
