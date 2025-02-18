@@ -25,6 +25,7 @@
 
 .post-list{
   flex-basis: 70%;
+  margin: 10px;
 }
 
 .flex {
