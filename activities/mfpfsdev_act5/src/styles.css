@@ -1,29 +1,65 @@
+:root{
+    /* Textos */
+    --color-primary-text: #ffffff;
+    --color-secondary-text: #d1d1d1;
+
+    /* Fondo */
+    --color-primary-bg: #000000;
+
+    /* Tema */
+    --color-theme: #1da1f2;
+    --color-theme-light: #1da1f2;
+    --color-theme-dark: #1da1f2;
+
+    /* Bordes */
+    --color-common-border: #cecece;
+    --color-input-focus-borders: #066aff;
+
+    /* Sombras */
+    --common-shadow: 0 0 15px #ffffff98;
+    --input-focus-shadow: 0 0 11px #267dff84;
+
+    /* Botones */
+    --color-btn-primary-bg: #0066ff;
+    --color-btn-primary-text: white;
+    --color-btn-primary-hover-bg: #0245a8;
+    --color-btn-primary-hover-text: white;
+
+    /* Formularios */
+    --color-input-focus: #066aff;
+    --color-input-focus-shadow: #267dff84;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", serif;
 
-    background-color: black;
-    color: white;
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-text);
 }
 
 .header-1{
-    color: #1da1f2;
+    color: var(--color-theme);
     font-size: 2rem;
 }
 
 .header-2{
-    color: #1da1f2;
+    color: var(--color-theme-dark);
     font-size: 1.75rem;
 }
 
 .header-3{
-    color: #6fc4f8;
+    color: var(--color-theme-light);
     font-size: 1.25rem;
 }
 
 .header-4{
-    color: #b7e3ff;
+    color: var(--color-theme-light);
     font-size: 1.1rem;
+}
+
+.bold{
+    font-weight: bold;
 }

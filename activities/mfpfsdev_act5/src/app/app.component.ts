@@ -32,7 +32,7 @@ export class AppComponent {
       "body": "Estaba pensando… ¿para qué molestarse con hospitales si puedes pedir un bebé por Amazon? Eliges color de ojos, nivel de calvicie hereditaria y si quieres que venga con Prime, te lo entregamos en 24 horas con un pañal gratis. Si no te gusta, devolución gratuita en 30 días. Lo llamaré Amazon Stork. P.D.: Los suscriptores Prime pueden preordenar gemelos con 10% de descuento.",
       "date": "04/01/2025"
     }
-];
+  ];
   getNewPost(event: IPost): void {
     this.arrPosts = [...this.arrPosts, event];
   }

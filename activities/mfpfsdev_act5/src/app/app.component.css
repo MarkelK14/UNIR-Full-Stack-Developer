@@ -1,3 +1,9 @@
+.logo {
+  width: 48px;
+  height: 48px;
+  fill: var(--color-theme);
+}
+
 .header{
   display: flex;
   align-items: center;
@@ -11,7 +17,7 @@
 
 .new-post{
   flex-basis: 30%;
-  box-shadow: 0 0 15px  #ffffff98;
+  box-shadow: var(--input-focus-shadow);
   margin: 10px;
   top: 10;
 }
@@ -40,7 +46,7 @@
   flex-direction: column;
 }
 
-@media(min-width: 600px) {
+@media(min-width: 900px) {
   .flex {
     flex-direction: row;
   }

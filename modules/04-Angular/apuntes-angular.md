@@ -30,6 +30,7 @@
     - [effect()](#effect)
     - [Funciones de los signals](#funciones-de-los-signals)
       - [.required()](#required)
+  - [12. Servicios](#12-servicios)
 
 ## 1. Instalación y descargas
 
@@ -599,3 +600,5 @@ Si el padre no pasa ```nombre```, Angular lanzará un error indicando que falta 
 
 > [!NOTE]
 > Si el signal es de tipo model hay que ponerle ```.required()``` obligatoriamente (se le pasa por variable).
+
+## 12. Servicios
