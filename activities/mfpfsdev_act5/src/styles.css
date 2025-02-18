@@ -7,3 +7,23 @@
     background-color: black;
     color: white;
 }
+
+.header-1{
+    color: #1da1f2;
+    font-size: 2rem;
+}
+
+.header-2{
+    color: #1da1f2;
+    font-size: 1.75rem;
+}
+
+.header-3{
+    color: #6fc4f8;
+    font-size: 1.25rem;
+}
+
+.header-4{
+    color: #b7e3ff;
+    font-size: 1.1rem;
+}
