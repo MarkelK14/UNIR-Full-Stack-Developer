@@ -25,6 +25,13 @@
     --color-btn-primary-hover-bg: #0245a8;
     --color-btn-primary-hover-text: white;
 
+    --color-btn-secondary-bg: transparent;
+    --color-btn-secondary-text: white;
+    --color-btn-secondary-hover-bg: transparent;
+    --color-btn-secondary-hover-text: white;
+    --color-btn-secondary-border: white;
+    --color-btn-secondary-hover-border: #0066ff;
+
     /* Formularios */
     --color-input-focus: #066aff;
     --color-input-focus-shadow: #267dff84;
