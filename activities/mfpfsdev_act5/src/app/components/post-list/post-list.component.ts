@@ -8,10 +8,26 @@ import { IPost } from '../../interfaces/ipost.interface';
   styleUrl: './post-list.component.css'
 })
 export class PostListComponent {
-  @Input() posts: IPost[] = [];
+  @Input() defaultPosts: IPost[] = [];
+  posts: IPost[] = [];
   borderBottom: string = '1px solid #cecece';
 
   ngOnInit() {
-    console.log('posts', this.posts);
+    this.posts = this.defaultPosts;
+  }
+
+  searchPosts(event: any) {
+    console.log('this.posts', this.posts);
+    this.posts = this.defaultPosts;
+    console.log('this.posts', this.posts);
+    const inputValue:string = event.target.value;
+    this.posts = this.defaultPosts.filter(post => post.body.toLowerCase().includes(inputValue.toLowerCase()));
+
+    console.log('event', event);
+    console.log('event.target.value', event.target.value);
+  }
+
+  ngOnChanges() {
+    this.posts = this.defaultPosts;
   }
 }
