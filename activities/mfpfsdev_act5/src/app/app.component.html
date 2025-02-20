@@ -21,9 +21,9 @@
     </div>
   </nav>
 </header>
-<main >
-  <div class="container p-3 d-flex flex-column flex-lg-row  justify-content-between gap-5 border-red">
-    <div class="newPost p-3 w-100 w-lg-25 border-blue">
+<main>
+  <div class="container p-3 d-flex flex-column flex-lg-row justify-content-between gap-5 border-red">
+    <div class="newPost p-3 w-100 w-lg-25 border-blue flex-grow-1 flex-lg-grow-0">
       <h2 class="text-primary">New Post</h2>
       <hr>
       <div>
@@ -44,21 +44,24 @@
       </div>
       <button class="btn btn-primary mt-3">Post it!</button>
     </div>
-    <div class="postList p-3 w-100 w-lg-75 border-blue">
+    <div class="postList p-3 border-blue flex-grow-1 flex-lg-grow-0">
       <h2 class="text-primary">Post List</h2>
       <hr>
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success-emphasis">username</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-body-secondary">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="col-auto d-none d-md-block me-lg-3">
-          <img class="bd-placeholder-img" width="200" height="250" src="https://placehold.co/1000x1000" alt="" preserveAspectRatio="xMidYMid slice" focusable="false">
-        </div>
-      </div>
+
+      @for (post of arrPosts; track post) {
+        <article class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative align-items-center">
+          <div class="col-auto d-none d-md-block ms-3 ms-lg-3">
+            <img class="bd-placeholder-img object-fit-cover" width="250" height="250" src="{{post.imageURL}}" alt="" preserveAspectRatio="xMidYMid slice" focusable="false">
+          </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success-emphasis">{{post.username}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-body-secondary">{{post.date}}</div>
+            <p class="mb-auto">{{post.body}}</p>
+          </div>
+        </article>
+      }
+
     </div>
   </div>
-
 </main>
