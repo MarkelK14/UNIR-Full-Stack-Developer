@@ -1,0 +1,42 @@
+<div class="container p-3 d-flex flex-column flex-lg-row justify-content-between gap-5 border-red">
+    <div class="newPost p-3 w-100 w-lg-25 border-blue flex-grow-1 flex-lg-grow-0">
+      <h2 class="text-primary">New Post</h2>
+      <hr>
+      <div>
+        <label for="username" class="form-label">Username</label>
+        <input class="form-control" id="username" type="text" maxlength="25" placeholder="Username" [(ngModel)]="newPost.username">
+      </div>
+      <div>
+        <label for="title" class="form-label">Title</label>
+        <input class="form-control" id="title" type="text" maxlength="100" placeholder="Title" [(ngModel)]="newPost.title">
+      </div>
+      <div>
+        <label for="body" class="form-label">Body</label>
+        <textarea class="form-control" id="body" type="text" rows="10" placeholder="Body" [(ngModel)]="newPost.body"></textarea>
+      </div>
+      <div>
+        <label for="image" class="form-label">Image URL</label>
+        <input class="form-control" id="image" type="text" placeholder="Image URL" [(ngModel)]="newPost.imageURL">
+      </div>
+      <button class="btn btn-primary mt-3" (click)="getPost()">Post it!</button>
+    </div>
+    <div class="postList p-3 border-blue flex-grow-1 flex-lg-grow-0">
+      <h2 class="text-primary">Post List</h2>
+      <hr>
+
+      @for (post of arrPosts; track post) {
+        <article class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative align-items-center">
+          <div class="col-auto d-none d-md-block m-3">
+            <img class="rounded bd-placeholder-img object-fit-cover" width="200" height="200" src="{{post.imageURL}}" alt="" preserveAspectRatio="xMidYMid slice" focusable="false">
+          </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success-emphasis">{{post.username}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-body-secondary">{{post.date}}</div>
+            <p class="mb-auto">{{post.body}}</p>
+          </div>
+        </article>
+      }
+
+    </div>
+  </div>
