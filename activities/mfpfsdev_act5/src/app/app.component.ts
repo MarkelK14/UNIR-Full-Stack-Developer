@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IPost } from './interfaces/ipost.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -31,4 +32,26 @@ export class AppComponent {
       "date": "04/01/2025"
     }
   ];
+
+  newPost: IPost = {username: '', title: '', imageURL: '', body: '', date: ''};
+  currentDate: Date = new Date();
+
+  getFormattedDate(): string {
+    const day = this.currentDate.getDate().toString().padStart(2, '0');
+    const month = (this.currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = this.currentDate.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  getPost(): void {
+    console.log('currentDate', this.currentDate.toISOString);
+    if (this.newPost.username === '' || this.newPost.title === '' || this.newPost.imageURL === '' || this.newPost.body === '') {
+      alert('All fields are required');
+      return;
+    }else{
+      this.newPost.date = this.getFormattedDate();
+      this.arrPosts = [...this.arrPosts, this.newPost];
+      this.newPost = {username: '', title: '', imageURL: '', body: '', date: ''};      
+    }
+  }
 }
