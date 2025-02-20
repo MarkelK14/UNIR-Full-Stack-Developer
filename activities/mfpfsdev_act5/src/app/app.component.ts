@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IPost } from './interfaces/ipost.interface';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,27 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+  arrPosts: IPost[] = [
+    {
+      "username": "Ellon Musk",
+      "title": "Creo que acabo de arreglar X 🚀💡",
+      "imageURL": "https://i.blogs.es/2f36bc/musk2/500_333.webp",
+      "body": "Estaba pensando… ¿y si eliminamos los likes? Así la gente no busca aprobación, solo postea por amor al arte. Pero luego pensé, ¿y si también eliminamos los posts? Solo pensamientos telepáticos entre usuarios verificados. Esperen… ¿y si eliminamos a los usuarios? X sería puro potencial, una red social perfecta, sin peleas ni bots. Lo llamaré X-Infinity. P.D.: No se preocupen, la suscripción premium seguirá costando $8.",
+      "date": "15/01/2025"
+    },
+    {
+      "username": "Mark Zuckerberg",
+      "title": "Voy a hacer que todos usen Facebook a la fuerza 😎",
+      "imageURL": "https://media.es.wired.com/photos/6387e72ca6d3cf129953d7cc/16:9/w_2560%2Cc_limit/Why-Meta-Is-Tanking-Mark-Zuckerberg-Busines-1178141588.jpg",
+      "body": "Estaba pensando… ¿y si obligamos a todos a tener Facebook? Literalmente. Sin cuenta, no puedes entrar a tu casa, usar el baño o comprar pan. Los bebés nacen con una cuenta preactivada y su primer post es el llanto inicial. Si intentas borrar tu perfil, un dron de Meta te sigue y te proyecta memes en la cara hasta que te rindas. Lo llamaré MetaTotal. P.D.: La suscripción premium te deja cerrar los ojos por 5 minutos al día.",
+      "date": "11/01/2025"
+    },
+    {
+      "username": "Jeff Bezos",
+      "title": "¿Y si Amazon entregara los bebés? 🚼📦",
+      "imageURL": "https://forbes.es/wp-content/uploads/2022/11/jeff-bezos.jpg",
+      "body": "Estaba pensando… ¿para qué molestarse con hospitales si puedes pedir un bebé por Amazon? Eliges color de ojos, nivel de calvicie hereditaria y si quieres que venga con Prime, te lo entregamos en 24 horas con un pañal gratis. Si no te gusta, devolución gratuita en 30 días. Lo llamaré Amazon Stork. P.D.: Los suscriptores Prime pueden preordenar gemelos con 10% de descuento.",
+      "date": "04/01/2025"
+    }
+  ];
 }
