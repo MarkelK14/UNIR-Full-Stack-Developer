@@ -2,6 +2,9 @@
     margin-bottom: 20px;
 }
 
+
+
+/* ----------------- */
 .border-red{
     border: 1px solid red;
 }
@@ -12,4 +15,16 @@
 
 .border-green{
     border: 1px solid green;
+}
+
+.border-fuchsia{
+    border: 1px solid fuchsia;
+}
+
+.border-blueviolet{
+    border: 1px solid blueviolet;
+}
+
+.border-greenyellow{
+    border: 1px solid greenyellow;
 }
