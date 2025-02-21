@@ -18,21 +18,20 @@ export class BlogComponent {
       "date": "15/01/2025"
     },
     {
+      "username": "Jeff Bezos",
+      "title": "¿Y si Amazon entregara los bebés? 🚼📦",
+      "imageURL": "https://forbes.es/wp-content/uploads/2022/11/jeff-bezos.jpg",
+      "body": "Estaba pensando… ¿para qué molestarse con hospitales si puedes pedir un bebé por Amazon? Eliges color de ojos, nivel de calvicie hereditaria y si quieres que venga con Prime, te lo entregamos en 24 horas con un pañal gratis. Si no te gusta, devolución gratuita en 30 días. Lo llamaré Amazon Stork. P.D.: Los suscriptores Prime pueden preordenar gemelos con 10% de descuento.",
+      "date": "04/02/2025"
+    },
+    {
       "username": "Mark Zuckerberg",
       "title": "Voy a hacer que todos usen Facebook a la fuerza 😎",
       "imageURL": "https://media.es.wired.com/photos/6387e72ca6d3cf129953d7cc/16:9/w_2560%2Cc_limit/Why-Meta-Is-Tanking-Mark-Zuckerberg-Busines-1178141588.jpg",
       "body": "Estaba pensando… ¿y si obligamos a todos a tener Facebook? Literalmente. Sin cuenta, no puedes entrar a tu casa, usar el baño o comprar pan. Los bebés nacen con una cuenta preactivada y su primer post es el llanto inicial. Si intentas borrar tu perfil, un dron de Meta te sigue y te proyecta memes en la cara hasta que te rindas. Lo llamaré MetaTotal. P.D.: La suscripción premium te deja cerrar los ojos por 5 minutos al día.",
       "date": "11/01/2025"
-    },
-    {
-      "username": "Jeff Bezos",
-      "title": "¿Y si Amazon entregara los bebés? 🚼📦",
-      "imageURL": "https://forbes.es/wp-content/uploads/2022/11/jeff-bezos.jpg",
-      "body": "Estaba pensando… ¿para qué molestarse con hospitales si puedes pedir un bebé por Amazon? Eliges color de ojos, nivel de calvicie hereditaria y si quieres que venga con Prime, te lo entregamos en 24 horas con un pañal gratis. Si no te gusta, devolución gratuita en 30 días. Lo llamaré Amazon Stork. P.D.: Los suscriptores Prime pueden preordenar gemelos con 10% de descuento.",
-      "date": "04/01/2025"
     }
   ];
-
   newPost: IPost = {username: '', title: '', imageURL: '', body: '', date: ''};
   currentDate: Date = new Date();
 
@@ -44,7 +43,6 @@ export class BlogComponent {
   }
 
   getPost(): void {
-    console.log('currentDate', this.currentDate.toISOString);
     if (this.newPost.username === '' || this.newPost.title === '' || this.newPost.imageURL === '' || this.newPost.body === '') {
       alert('All fields are required');
       return;
