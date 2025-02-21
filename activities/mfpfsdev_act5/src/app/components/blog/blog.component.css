@@ -1,0 +1,17 @@
+.newPost{
+    flex-basis: 100%;
+}
+
+.postList{
+    flex-basis: 100%;
+}
+
+@media(min-width: 960px) {
+    .newPost {
+        flex-basis: 30%;
+    }
+  
+    .postList{
+        flex-basis: 70%;
+    }
+}

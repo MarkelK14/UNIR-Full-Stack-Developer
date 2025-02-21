@@ -1,4 +1,4 @@
-<div class="container p-3 d-flex flex-column flex-lg-row justify-content-between gap-5 border-red">
+<div class="container d-flex flex-column flex-lg-row justify-content-between gap-5 border-red">
     <div class="newPost p-3 w-100 w-lg-25 border-blue flex-grow-1 flex-lg-grow-0">
       <h2 class="text-primary">New Post</h2>
       <hr>
@@ -20,8 +20,13 @@
       </div>
       <button class="btn btn-primary mt-3" (click)="getPost()">Post it!</button>
     </div>
-    <div class="postList p-3 border-blue flex-grow-1 flex-lg-grow-0">
-      <h2 class="text-primary">Post List</h2>
+    <div class="postList p-3 w-100 w-lg-75 border-blue flex-grow-1 flex-lg-grow-0">
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+        <h2 class="text-primary">Post List</h2>
+        <div class="w-50">
+            <input type="text" class="form-control" placeholder="Search" (input)="searchPosts($event)">
+        </div>
+      </div>
       <hr>
 
       @for (post of arrPosts; track post) {

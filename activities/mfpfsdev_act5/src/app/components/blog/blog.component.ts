@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
-  arrPosts: IPost[] = [
+  defaultPosts: IPost[] = [
     {
       "username": "Ellon Musk",
       "title": "Creo que acabo de arreglar X 🚀💡",
@@ -32,9 +32,18 @@ export class BlogComponent {
       "date": "04/01/2025"
     }
   ];
+  arrPosts: IPost[] = [];
 
   newPost: IPost = {username: '', title: '', imageURL: '', body: '', date: ''};
   currentDate: Date = new Date();
+
+  ngOnInit() {
+    this.arrPosts = this.defaultPosts;
+  }
+
+  ngOnChanges() {
+    this.arrPosts = this.defaultPosts;
+  }
 
   getFormattedDate(): string {
     const day = this.currentDate.getDate().toString().padStart(2, '0');
@@ -50,8 +59,17 @@ export class BlogComponent {
       return;
     }else{
       this.newPost.date = this.getFormattedDate();
-      this.arrPosts = [...this.arrPosts, this.newPost];
+      this.defaultPosts = [...this.defaultPosts, this.newPost];
       this.newPost = {username: '', title: '', imageURL: '', body: '', date: ''};      
     }
+  }
+
+  searchPosts(event: any) {
+    this.arrPosts = this.defaultPosts;
+    const inputValue:string = event.target.value;
+    this.arrPosts = this.defaultPosts.filter(post => post.body.toLowerCase().includes(inputValue.toLowerCase()));
+
+    console.log('event', event);
+    console.log('event.target.value', event.target.value);
   }
 }
