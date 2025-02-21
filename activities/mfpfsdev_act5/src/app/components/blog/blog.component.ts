@@ -48,6 +48,9 @@ export class BlogComponent {
     if (this.newPost.username === '' || this.newPost.title === '' || this.newPost.imageURL === '' || this.newPost.body === '') {
       alert('All fields are required');
       return;
+    }else if (this.newPost.imageURL.substring(0, 4) !== 'http') {
+      alert('The image URL must start be a valid URL');
+      return;
     }else{
       this.newPost.date = this.getFormattedDate();
       this.arrPosts = [...this.arrPosts, this.newPost];

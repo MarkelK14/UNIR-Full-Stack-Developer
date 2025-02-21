@@ -27,7 +27,7 @@
       @for (post of arrPosts; track post) {
         <article class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative align-items-center">
           <div class="col-auto d-none d-md-block m-3">
-            <img class="rounded bd-placeholder-img object-fit-cover" width="200" height="200" src="{{post.imageURL}}" alt="" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img class="rounded bd-placeholder-img object-fit-cover" width="200" height="200" src="{{post.imageURL}}" alt="{{post.title}}" preserveAspectRatio="xMidYMid slice" focusable="false">
           </div>
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">{{post.title}}</h3>
