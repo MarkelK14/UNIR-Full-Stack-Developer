@@ -1,1 +1,9 @@
 <p>user-list works!</p>
+
+<ul>
+
+@for (usuario of arrUsuarios; track usuario.id) {
+    <li>{{usuario.username}}</li>
+}
+
+</ul>
