@@ -1,0 +1,18 @@
+.grid {
+  margin-top: 0.625rem;
+  display: grid;
+  gap: 0.9375rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media(min-width: 48.0625rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 62.75rem) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

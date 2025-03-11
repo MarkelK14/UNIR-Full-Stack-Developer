@@ -1,0 +1,10 @@
+<section class="sectionform">
+  <form class="form" #postForm="ngForm" (ngSubmit)="guardarPost(postForm)">
+    <input type="text" placeholder="introduce el titulo del noticia" ngModel name="title">
+    <input type="text" placeholder="introduce el autor" ngModel name="author">
+    <input type="date" placeholder="introduce la fecha" ngModel name="date">
+    <input type="text" placeholder="introduce la la url de la imagen" ngModel name="url">
+    <textarea name="" id="" rows="10" ngModel name="body"></textarea>
+    <button>Guardar</button>
+  </form>
+</section>
