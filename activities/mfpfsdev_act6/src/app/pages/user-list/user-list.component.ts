@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { IResponse } from '../../interfaces/iresponse.interface';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-user-list',
@@ -21,7 +22,7 @@ export class UserListComponent {
     try {
       let response: IResponse = await this.usuariosServices.getAllPromise();
       this.arrUsuarios = response.results;
-      console.log(`Page: ${response.page}, Per Page: ${response.per_page}, Total: ${response.total}, Total Pages: ${response.total_pages}`);
+      toast.info('Usuarios cargados correctamente');
     } catch (error) {
       console.log(error);
     }
