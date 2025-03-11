@@ -30,7 +30,7 @@
     - [effect()](#effect)
     - [Funciones de los signals](#funciones-de-los-signals)
       - [.required()](#required)
-  - [12. Servicios](#12-servicios)
+  - [12. Bootstrap en Angular](#12-bootstrap-en-angular)
 
 ## 1. Instalación y descargas
 
@@ -601,4 +601,35 @@ Si el padre no pasa ```nombre```, Angular lanzará un error indicando que falta 
 > [!NOTE]
 > Si el signal es de tipo model hay que ponerle ```.required()``` obligatoriamente (se le pasa por variable).
 
-## 12. Servicios
+## 12. Bootstrap en Angular
+Ejecutar el siguiente comando en la terminal, dentro de nuestra app:
+```console
+npm install bootstrap
+```
+De esta forma se descagará Bootstrap en nuestro proyecto.
+
+A continuación, comprobar que en en el archivo ```package.json``` del proyecto se encuentra la siguiente línea con la versión de Bootstrap, dentro de ```dependencies```:
+```
+"bootstrap": "^5.3.3",
+```
+
+Después, iremos al archivo ```angular.json``` y buscar en ```projects/formularios/build``` las líneas de ```styles``` (línea 29 aprox) y ```scripts``` (línea 32 aprox). Modificaremos las siguientes líneas para cargar la hoja de estilos de Bootstrap, siempre por encima de la de la app:
+```
+"assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css", 
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+          },
+```
+
+> [!IMPORTANT]
+> Cualquier modificación del ```angular.json``` requiere **obligatoriamente** reiniciar el servidor si lo hemos levantado.
