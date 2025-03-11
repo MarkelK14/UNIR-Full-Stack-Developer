@@ -1,0 +1,18 @@
+header {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-bottom: 3px solid tomato;
+}
+
+main {
+  padding: 40px;
+}
+
+footer {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-top: 3px solid tomato;
+  width: 100%;
+}

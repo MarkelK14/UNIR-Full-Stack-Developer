@@ -1,0 +1,7 @@
+<div class="grid">
+  @for( post of arrPosts; track post.id ){
+  <app-post-card [miPost]="post"></app-post-card>
+  }@empty {
+  <h2>NO HAY POST PUBLICADOS</h2>
+  }
+</div>
