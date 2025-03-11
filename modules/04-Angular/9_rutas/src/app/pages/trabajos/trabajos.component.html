@@ -1,0 +1,14 @@
+<section class="card p-4 m-5 shadow">
+  <h1>Servicios que ofrecemos</h1>
+  <div class="row g-3">
+    @for( servicio of arrServicios; track servicio.id ){
+    <article class="col-12 col-md-6 col-lg-4">
+      <div class="bg-body-secondary p-3">
+        <h3>{{servicio.titulo}}</h3>
+        <a class="btn btn-primary" [routerLink]="['/servicios', servicio.url]">Ver detalle</a>
+      </div>
+    </article>
+    }
+  </div>
+</section>
+<!-- ver detalle me lleve a la ruta /servicios/desarrollo-web -->

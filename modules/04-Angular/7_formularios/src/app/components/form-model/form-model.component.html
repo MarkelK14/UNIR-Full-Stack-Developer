@@ -1,0 +1,67 @@
+<section class="container">
+  <h2>Formulario de model - {{userForm.valid}}</h2>
+  <hr>
+  <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="introduce tu nombre">
+      @if(checkControl('nombre', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      }
+      @if(checkControl('nombre', 'minlength')){
+      <p class="error">El campo tiene que tener al menos 3 caracteres</p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" id="email" class="form-control" formControlName="email" placeholder="introduce tu email">
+      @if(checkControl('email', 'required')){
+      <p class="error">Campo obligatorio</p>
+      }
+      @if(checkControl('email', 'pattern')){
+      <p class="error">El email tiene que ser correcto</p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad</label>
+      <input type="number" id="edad" class="form-control" formControlName="edad" placeholder="introduce tu edad">
+      @if(checkControl('edad', 'required')){
+      <p class="error">Campo obligatorio</p>
+      }
+      @if(checkControl('edad', 'min')){
+      <p class="error">La edad minima es de 18 años</p>
+      }
+      @if(checkControl('edad', 'max')){
+      <p class="error">La edad maxima es de 65 años</p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="dni" class="form-label">DNI</label>
+      <input type="text" id="dni" class="form-control" formControlName="dni">
+      @if(checkControl('dni', 'dnivalidator')){
+      <p class="error">{{userForm.get('dni')?.errors?.['dnivalidator']}}</p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" class="form-control" formControlName="password">
+      @if(checkControl('password', 'required')){
+      <p class="error">Campo Obligatorio</p>
+      }
+      @if(checkControl('password', 'minlength')){
+      <p class="error">Longitud minima 8 caracteres</p>
+      }
+      @if(checkControl('password', 'maxlength')){
+      <p class="error">Longitud maxima 16 caracteres</p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="repitepassword" class="form-label">Repite Password</label>
+      <input type="password" id="repitepassword" class="form-control" formControlName="repitepassword">
+    </div>
+
+    <input type="submit" value="Enviar" class="btn btn-danger" [disabled]="userForm.invalid">
+  </form>
+</section>

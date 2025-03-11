@@ -1,0 +1,45 @@
+<section>
+  <app-ciclovida [miInput]="edad"></app-ciclovida>
+</section>
+
+
+
+<section>
+  <!-- componente galeria -->
+  <app-galeria></app-galeria>
+  <app-galeria></app-galeria>
+  <app-galeria></app-galeria>
+</section>
+
+
+
+<section>
+  <!-- componente contador -->
+  <app-contador></app-contador>
+  <app-contador></app-contador>
+  <app-contador></app-contador>
+</section>
+
+<hr>
+<!-- comunicacion entre ts => html -->
+<!-- interpolacion -->
+<h1>Componente {{ nombre }}</h1>
+<p>Edad: <span>{{ edad }}</span></p>
+<p>{{ sumar(edad, 12) }}</p>
+<p> {{ (edad >= 18) ? 'Eres mayor de edad' : 'Eres menor de edad' }}</p>
+
+<!-- comunicacion del html => ts -->
+<!-- event Biding -->
+<button (click)="cambiarColor('blue')">Click</button>
+<!-- property Biding -->
+<!-- <div class="caja" [style]="estiloCaja"></div> -->
+<div class="caja" [style.background-color]="estiloCaja"></div>
+
+<!-- que pasa si necesito capturar algo del propio elemento que lanza evento -->
+<select (change)="selectCity($event)">
+  <option value="">Selecciona una ciudad</option>
+  <option value="m">Madrid</option>
+  <option value="p">Paris</option>
+  <option value="l">Londres</option>
+</select>
+<h3>En que ciudad vives: {{ciudadSeleccionada}}</h3>

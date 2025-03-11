@@ -1,0 +1,5 @@
+@for(alumno of alumnos; track alumno.id){
+<app-alumno-card [miAlumno]="alumno"></app-alumno-card>
+}@empty{
+<p>NO HAY ALUMNOS EN LA BBDD</p>
+}
