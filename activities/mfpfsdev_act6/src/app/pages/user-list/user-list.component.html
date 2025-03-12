@@ -1,9 +1,23 @@
-<section class="usuarios">
-    <div class="row g-4 justify-content-center">
-      @for(usuario of arrUsuarios; track usuario.id){
-      <article class="col-12 col-md-6 col-xl-4">
-        <app-usuario-card [selectedUser] = "usuario"></app-usuario-card>
-      </article>
-      }
+
+
+  @if(isLoading === true){
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="spinner-border text-primary" role="status">
+      </div>
+      <span class="sr-only">Cargando...</span>
     </div>
-</section>  
+  }
+  
+  @if(isLoading === false){
+    <section class="usuarios">
+      <div class="row g-4 justify-content-center">
+        @for(usuario of arrUsuarios; track usuario.id){
+        <article class="col-12 col-md-6 col-xl-4">
+          <app-usuario-card [selectedUser] = "usuario"></app-usuario-card>
+        </article>
+        }
+      </div>
+    </section>
+  }
+
+<!-- </div> -->

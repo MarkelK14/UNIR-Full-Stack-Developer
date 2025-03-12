@@ -16,4 +16,10 @@ export class UsuariosService {
     console.log
     return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl))
   }
+
+  getById(id: string): Promise<IUsuario> {
+    console.log('id', id)
+    console.log('url', `${this.baseUrl}/${id}`)
+    return lastValueFrom(this.httpClient.get<IUsuario>(`${this.baseUrl}/${id}`))
+  }
 }

@@ -15,17 +15,23 @@ export class UserListComponent {
   arrUsuarios: IUsuario[] = [];
   usuariosServices = inject(UsuariosService);
 
+  isLoading: boolean = false;
+
   async ngOnInit() {
     this.cargarPersonajes();
   }
 
   async cargarPersonajes() {
+    this.isLoading = true;
     try {
       let response: IResponse = await this.usuariosServices.getAllPromise();
       this.arrUsuarios = response.results;
       toast.info('Usuarios cargados correctamente');
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      this.isLoading = false;
     }
   }
 }

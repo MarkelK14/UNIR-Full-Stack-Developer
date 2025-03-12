@@ -1,0 +1,26 @@
+
+
+@if(isLoading === true){
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+    <span class="sr-only">Cargando...</span>
+  </div>
+}
+
+@if(isLoading === false){
+  <section class="container py-4">
+    <div class="row">
+      <figure class="col-12 col-md-3">
+        <img class="img-fluid" [src]="usuario.image" [alt]="usuario.username">
+      </figure>
+      <div class="col-12 col-md-9">
+        <h1 class="text-white">{{usuario.first_name}} {{usuario.last_name}}</h1>
+        <hr class="border-white">
+        <p class="text-warning">{{usuario.username}}</p>
+        <p class="text-warning">{{usuario.email}}</p>
+        <p class="text-warning">{{usuario.password}}</p>
+      </div>
+    </div>
+</section>
+}
