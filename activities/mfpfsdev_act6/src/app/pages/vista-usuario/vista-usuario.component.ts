@@ -1,10 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
+import { RouterLink } from '@angular/router';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-vista-usuario',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './vista-usuario.component.html',
   styleUrl: './vista-usuario.component.css'
 })
@@ -20,7 +22,7 @@ export class VistaUsuarioComponent {
     this.isLoading = true;
     try{
       this.usuario = await this.usuariosService.getById(id);
-      console.log(this.usuario);
+      toast.info(`Usuario ${this.usuario.username} cargado correctamente`);
     }catch (error){
       console.log(error);
     }finally{
