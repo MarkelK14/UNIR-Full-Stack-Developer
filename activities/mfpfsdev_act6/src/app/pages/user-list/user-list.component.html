@@ -1,10 +1,9 @@
-<div class="row g-4 justify-content-center gap-4">
-    @for (usuario of arrUsuarios; track usuario.id) {
-        <div class="card p-4" style="width: 18rem;">
-            <img src="{{usuario.image}}" class="card-img-top rounded-circle" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{usuario.first_name}} {{usuario.last_name}}</h5>
-            </div>
-        </div>
-    }
-</div>
+<section class="usuarios">
+    <div class="row g-4 justify-content-center">
+      @for(usuario of arrUsuarios; track usuario.id){
+      <article class="col-12 col-md-6 col-xl-4">
+        <app-usuario-card [selectedUser] = "usuario"></app-usuario-card>
+      </article>
+      }
+    </div>
+</section>  

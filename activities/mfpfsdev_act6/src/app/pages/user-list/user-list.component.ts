@@ -3,10 +3,11 @@ import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { IResponse } from '../../interfaces/iresponse.interface';
 import { toast } from 'ngx-sonner';
+import { UsuarioCardComponent } from '../../components/usuario-card/usuario-card.component';
 
 @Component({
   selector: 'app-user-list',
-  imports: [],
+  imports: [UsuarioCardComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

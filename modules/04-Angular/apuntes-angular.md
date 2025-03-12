@@ -633,3 +633,6 @@ Después, iremos al archivo ```angular.json``` y buscar en ```projects/formulari
 
 > [!IMPORTANT]
 > Cualquier modificación del ```angular.json``` requiere **obligatoriamente** reiniciar el servidor si lo hemos levantado.
+
+
+![Visitas](https://img.shields.io/badge/dynamic/json?color=green&label=Visitas&query=value&url=https://api.countapi.xyz/hit/MarkelK14.MarkelK14)
