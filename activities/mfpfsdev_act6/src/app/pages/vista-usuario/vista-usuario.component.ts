@@ -23,8 +23,8 @@ export class VistaUsuarioComponent {
     try{
       this.usuario = await this.usuariosService.getById(id);
       toast.info(`Usuario ${this.usuario.username} cargado correctamente`);
-    }catch (error){
-      console.log(error);
+    }catch (msg: any){
+      console.log('msg', msg);
     }finally{
       this.isLoading = false;
     }
