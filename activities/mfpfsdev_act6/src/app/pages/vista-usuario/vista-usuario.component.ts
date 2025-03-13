@@ -22,10 +22,17 @@ export class VistaUsuarioComponent {
     this.isLoading = true;
     try{
       this.usuario = await this.usuariosService.getById(id);
-      toast.info(`Usuario ${this.usuario.username} cargado correctamente`);
+      console.log('vista-usuario.idBueno=>response', this.usuario);
+      this.usuario = await this.usuariosService.getById(id+'a');
+      console.log('vista-usuario.idMalo=>response', this.usuario);
+
+
+      // toast.info(`Usuario ${this.usuario.username} cargado correctamente`);
     }catch (msg: any){
       console.log('msg', msg);
+      toast.error('Se ha producido un error al cargar el usuario');
     }finally{
+      // console.log('vista-usuario.finally=>response', this.usuario);
       this.isLoading = false;
     }
   }

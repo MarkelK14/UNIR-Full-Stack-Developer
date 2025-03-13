@@ -38,7 +38,7 @@ export class UserListComponent {
   async cargarPersonajes(page: number = 0) {
     this.isLoading = true;
     try {
-      let response: IResponse = await this.usuariosServices.getAllPromise(page);
+      let response: IResponse = await this.usuariosServices.getAll(page);
       this.page = response.page;
       this.nextPage = response.page == response.total_pages ? 0 : response.page + 1;
       this.prevPage = response.page == 1 ? 0 : response.page - 1;

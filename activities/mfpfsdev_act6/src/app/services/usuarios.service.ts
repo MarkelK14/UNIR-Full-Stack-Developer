@@ -8,17 +8,17 @@ import { IUsuario } from '../interfaces/iusuario.interface';
   providedIn: 'root'
 })
 export class UsuariosService {
-  // para que un servicio pueda hacer una petición tiene que inyectar el httpClient
   private httpClient = inject(HttpClient)
-  private baseUrl: string = "https://peticiones.online/api/users";
+  private endPoint: string = "https://peticiones.online/api/users";
 
-  getAllPromise(page: number = 0): Promise<IResponse> {
-    // return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl))
-    let url = (page === 0) ? this.baseUrl : this.baseUrl + `?page=${page}`
+  getAll(page: number = 0): Promise<IResponse> {
+    let url = (page === 0) ? this.endPoint : this.endPoint + `?page=${page}`
     return lastValueFrom(this.httpClient.get<IResponse>(url))
   }
 
   getById(id: string): Promise<IUsuario> {
-    return lastValueFrom(this.httpClient.get<IUsuario>(`${this.baseUrl}/${id}`))
+    let response =  lastValueFrom(this.httpClient.get<IUsuario>(`${this.endPoint}/${id}`))
+    console.log('usuarios.service=>response', response);
+    return response;
   }
 }
