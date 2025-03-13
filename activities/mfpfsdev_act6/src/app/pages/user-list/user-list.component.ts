@@ -14,6 +14,11 @@ import { UsuarioCardComponent } from '../../components/usuario-card/usuario-card
 export class UserListComponent {
   arrUsuarios: IUsuario[] = [];
   usuariosServices = inject(UsuariosService);
+  nextPage: number = 0;
+  prevPage: number = 0;
+
+  enablePrevBtn: boolean = false;
+  enableNextBtn: boolean = false;
 
   isLoading: boolean = false;
 
@@ -21,11 +26,25 @@ export class UserListComponent {
     this.cargarPersonajes();
   }
 
-  async cargarPersonajes() {
+  async gotoNext() {
+    this.cargarPersonajes(this.nextPage)
+  }
+
+  gotoPrev() {
+    this.cargarPersonajes(this.prevPage)
+  }
+
+  async cargarPersonajes(page: number = 0) {
     this.isLoading = true;
     try {
-      let response: IResponse = await this.usuariosServices.getAllPromise();
+      let response: IResponse = await this.usuariosServices.getAllPromise(page);
+      this.nextPage = response.page == response.total_pages ? 0 : response.page + 1;
+      this.prevPage = response.page == 1 ? 0 : response.page - 1;
       this.arrUsuarios = response.results;
+
+      this.enablePrevBtn = this.prevPage > 0;
+      this.enableNextBtn = this.nextPage > 0;
+
       toast.info('Usuarios cargados correctamente');
     } catch (error) {
       console.log(error);

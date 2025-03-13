@@ -12,8 +12,10 @@ export class UsuariosService {
   private httpClient = inject(HttpClient)
   private baseUrl: string = "https://peticiones.online/api/users";
 
-  getAllPromise(): Promise<IResponse> {
-    return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl))
+  getAllPromise(page: number = 0): Promise<IResponse> {
+    // return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl))
+    let url = (page === 0) ? this.baseUrl : this.baseUrl + `?page=${page}`
+    return lastValueFrom(this.httpClient.get<IResponse>(url))
   }
 
   getById(id: string): Promise<IUsuario> {
