@@ -3,10 +3,11 @@ import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { RouterLink } from '@angular/router';
 import { toast } from 'ngx-sonner';
+import { ButtonsComponent } from "../../shared/buttons/buttons.component";
 
 @Component({
   selector: 'app-vista-usuario',
-  imports: [RouterLink],
+  imports: [RouterLink, ButtonsComponent],
   templateUrl: './vista-usuario.component.html',
   styleUrl: './vista-usuario.component.css'
 })
