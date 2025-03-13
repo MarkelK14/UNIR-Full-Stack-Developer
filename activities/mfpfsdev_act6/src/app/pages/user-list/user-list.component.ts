@@ -14,6 +14,7 @@ import { UsuarioCardComponent } from '../../components/usuario-card/usuario-card
 export class UserListComponent {
   arrUsuarios: IUsuario[] = [];
   usuariosServices = inject(UsuariosService);
+  page: number = 0;
   nextPage: number = 0;
   prevPage: number = 0;
 
@@ -38,6 +39,7 @@ export class UserListComponent {
     this.isLoading = true;
     try {
       let response: IResponse = await this.usuariosServices.getAllPromise(page);
+      this.page = response.page;
       this.nextPage = response.page == response.total_pages ? 0 : response.page + 1;
       this.prevPage = response.page == 1 ? 0 : response.page - 1;
       this.arrUsuarios = response.results;
