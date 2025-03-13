@@ -1,0 +1,10 @@
+<button class="bg-blue-500 text-white px-2 py-1 me-3 rounded"
+  [routerLink]="['/dashboard', 'empleado', 'update',  myEmployee?._id]">Editar</button>
+<button (click)="deleteEmployee(myEmployee?._id)" class="bg-red-500 text-white px-2 py-1 me-3 rounded">Borrar</button>
+@if(volver){
+<button class="bg-yellow-500 text-white px-2 py-1 me-3 rounded"
+  [routerLink]="['/dashboard', 'empleados']">Volver</button>
+}@else{
+<button class="bg-green-500 text-white px-2 py-1 me-3 rounded"
+  [routerLink]="['/dashboard', 'empleado',  myEmployee?._id]">Ver Detalle</button>
+}

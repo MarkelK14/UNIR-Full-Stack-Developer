@@ -1,9 +1,56 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { IEmployee } from '../interfaces/iemployee.interface';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
+  private endPoint: string = "https://crm-empleados-v2.onrender.com/api/empleados"
+  private httpClient = inject(HttpClient);
 
-  constructor() { }
+  /**
+   * getAll()
+   * @returns Promise<IEmployee[]>
+   */
+  getAll(): Promise<IEmployee[]> {
+    //Mi peticion necesita para ser validada el token de autorización para devolver datos del servidor
+
+    //opcion 1: se usa, siempre y cuando cada funcion del servicio tenga una cabecera distinta, vamos crear una cabecera, que sera un varible que contiene el token de autorización.
+
+    /*
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token') || ""
+      })
+    }
+      */
+
+
+    return lastValueFrom(this.httpClient.get<IEmployee[]>(this.endPoint))
+  }
+
+  getById(id: string): Promise<IEmployee> {
+
+    return lastValueFrom(this.httpClient.get<IEmployee>(`${this.endPoint}/${id}`))
+  }
+
+  delete(id: string): Promise<IEmployee> {
+    return lastValueFrom(this.httpClient.delete<IEmployee>(`${this.endPoint}/${id}`));
+  }
+
+  //opcion 2: Cre una funcion interceptora que devuelve las cabeceras que necesito para todas las peticiones de empleados. Esta funcion seria solo para este servicio
+  private getAuthorization() {
+    return {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token') || ""
+      })
+    }
+  }
+
+
+
 }
