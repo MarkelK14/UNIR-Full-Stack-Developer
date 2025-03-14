@@ -46,8 +46,6 @@ export class UserListComponent {
 
       this.enablePrevBtn = this.prevPage > 0;
       this.enableNextBtn = this.nextPage > 0;
-
-      toast.info('Usuarios cargados correctamente');
     } catch (error) {
       console.log(error);
     }

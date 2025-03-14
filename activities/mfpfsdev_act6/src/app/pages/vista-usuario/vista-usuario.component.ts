@@ -3,6 +3,7 @@ import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { toast } from 'ngx-sonner';
 import { ButtonsComponent } from "../../shared/buttons/buttons.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-usuario',
@@ -12,8 +13,9 @@ import { ButtonsComponent } from "../../shared/buttons/buttons.component";
 })
 export class VistaUsuarioComponent {
   @Input() idUsuario: string = "";
-  usuario! : IUsuario;
+  usuario! : IUsuario | any;
   usuariosService = inject(UsuariosService);
+  router = inject (Router);
   
   isLoading: boolean = false;
 
@@ -21,18 +23,14 @@ export class VistaUsuarioComponent {
     let id = this.idUsuario;
     this.isLoading = true;
     try{
-      this.usuario = await this.usuariosService.getById(id);
-      console.log('vista-usuario.idBueno=>response', this.usuario);
-      this.usuario = await this.usuariosService.getById(id+'a');
-      console.log('vista-usuario.idMalo=>response', this.usuario);
-
-
-      // toast.info(`Usuario ${this.usuario.username} cargado correctamente`);
+      this.usuario = await this.usuariosService.getById(id);      
+      if (this.usuario.error){
+        toast.error('Se ha producido un error al cargar el usuario');
+        this.router.navigate(['/usuarios']);
+      }
     }catch (msg: any){
-      console.log('msg', msg);
-      toast.error('Se ha producido un error al cargar el usuario');
+      toast.error('Se ha producido un error');
     }finally{
-      // console.log('vista-usuario.finally=>response', this.usuario);
       this.isLoading = false;
     }
   }

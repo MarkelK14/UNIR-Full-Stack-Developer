@@ -18,7 +18,6 @@ export class UsuariosService {
 
   getById(id: string): Promise<IUsuario> {
     let response =  lastValueFrom(this.httpClient.get<IUsuario>(`${this.endPoint}/${id}`))
-    console.log('usuarios.service=>response', response);
     return response;
   }
 }
