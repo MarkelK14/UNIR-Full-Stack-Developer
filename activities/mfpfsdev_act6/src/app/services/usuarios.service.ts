@@ -12,12 +12,15 @@ export class UsuariosService {
   private endPoint: string = "https://peticiones.online/api/users";
 
   getAll(page: number = 0): Promise<IResponse> {
-    let url = (page === 0) ? this.endPoint : this.endPoint + `?page=${page}`
-    return lastValueFrom(this.httpClient.get<IResponse>(url))
+    let url = (page === 0) ? this.endPoint : this.endPoint + `?page=${page}`;
+    return lastValueFrom(this.httpClient.get<IResponse>(url));
   }
 
   getById(id: string): Promise<IUsuario> {
-    let response =  lastValueFrom(this.httpClient.get<IUsuario>(`${this.endPoint}/${id}`))
-    return response;
+    return  lastValueFrom(this.httpClient.get<IUsuario>(`${this.endPoint}/${id}`));
+  }
+
+  delete(id: string): Promise<IUsuario> {
+    return lastValueFrom(this.httpClient.delete<IUsuario>(`${this.endPoint}/${id}`));
   }
 }

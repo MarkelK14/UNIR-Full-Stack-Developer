@@ -2,6 +2,8 @@ import { Component, inject, Input } from '@angular/core';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router, RouterLink } from '@angular/router';
+import { toast } from 'ngx-sonner';
+import { IError } from '../../interfaces/ierror.interface';
 
 @Component({
   selector: 'app-buttons',
@@ -11,7 +13,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ButtonsComponent {
   @Input() selectedUser!: IUsuario | any;
-  usuariosServide = inject(UsuariosService);
+  error: IError | any;
+  usuariosService = inject(UsuariosService);
   router = inject(Router);
   @Input() volver: Boolean = false;
 
@@ -21,5 +24,22 @@ export class ButtonsComponent {
       console.log(this.volver)
       console.log('vuelve? finalizado')
     }, 3000);
+  }
+
+  deleteUser(id: string) {
+    toast(`Vas a borrar el usuario ${this.selectedUser?.first_name} ${this.selectedUser?.last_name}`, {
+      action: {
+        label: 'Aceptar',
+        onClick: async () => {
+          try{
+            await this.usuariosService.delete(id);
+            toast.success(`Usuario ${this.selectedUser?.first_name} ${this.selectedUser?.last_name} borrado correctamente`);
+          }catch (error){
+            toast.error(`No se ha podido borrar el usuario: ${error}`);
+          }
+        }
+      }
+    }
+    )
   }
 }
