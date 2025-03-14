@@ -41,6 +41,17 @@ export class EmployeesService {
     return lastValueFrom(this.httpClient.delete<IEmployee>(`${this.endPoint}/${id}`));
   }
 
+  update(employee: IEmployee): Promise<IEmployee> {
+    //destructuring
+    let { _id, ...employeeBody } = employee;
+    return lastValueFrom(this.httpClient.put<IEmployee>(`${this.endPoint}/${_id}`, employeeBody))
+  }
+
+  insert(employee: IEmployee): Promise<IEmployee> {
+    let { _id, ...employeeBody } = employee;
+    return lastValueFrom(this.httpClient.post<IEmployee>(this.endPoint, employeeBody))
+  }
+
   //opcion 2: Cre una funcion interceptora que devuelve las cabeceras que necesito para todas las peticiones de empleados. Esta funcion seria solo para este servicio
   private getAuthorization() {
     return {
