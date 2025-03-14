@@ -13,27 +13,21 @@ import { IError } from '../../interfaces/ierror.interface';
 })
 export class ButtonsComponent {
   @Input() selectedUser!: IUsuario | any;
-  error: IError | any;
   usuariosService = inject(UsuariosService);
   router = inject(Router);
-  @Input() volver: Boolean = false;
-
-  ngonInit() {
-    setTimeout(() => {
-      console.log('vuelve?')
-      console.log(this.volver)
-      console.log('vuelve? finalizado')
-    }, 3000);
-  }
+  @Input() volver: Boolean = false
 
   deleteUser(id: string) {
-    toast(`Vas a borrar el usuario ${this.selectedUser?.first_name} ${this.selectedUser?.last_name}`, {
+    console.log('selectedUser', this.selectedUser)
+    console.log('id', id)
+    toast(`Vas a borrar el usuario ${this.selectedUser.first_name} ${this.selectedUser.last_name}`, {
       action: {
         label: 'Aceptar',
         onClick: async () => {
           try{
             await this.usuariosService.delete(id);
-            toast.success(`Usuario ${this.selectedUser?.first_name} ${this.selectedUser?.last_name} borrado correctamente`);
+            toast.success(`Usuario ${this.selectedUser?.first_name} ${this.selectedUser?.last_name} eliminado correctamente`);
+            this.router.navigate(['/home']);
           }catch (error){
             toast.error(`No se ha podido borrar el usuario: ${error}`);
           }

@@ -19,7 +19,7 @@
         <h1 class="text-dark">{{usuario.last_name}}</h1>
         <p class="text"> <span class="fw-bold">Nombre de usuario: </span> {{usuario.username}}</p>
         <p class="text"> <span class="fw-bold">Email: </span> {{usuario.email}}</p>
-        <app-buttons [volver]="true"></app-buttons>
+        <app-buttons [selectedUser]="usuario" [volver]="true"></app-buttons>
       </div>
     </div>
 </section>
