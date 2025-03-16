@@ -19,10 +19,7 @@ export class UsuariosFormComponent {
 
   async ngOnInit(){
 
-    console.log(this.idUsuario)
-
     if (this.idUsuario) {
-      //llamamos al servicio y cargamos los datos del empleado.
       try {
         this.selectedUser = await this.usuariosService.getById(this.idUsuario);
         // this.title = 'Actualizar'
@@ -30,6 +27,8 @@ export class UsuariosFormComponent {
         toast.error(msg.error.error)
       }
     }
+
+    console.log(this.idUsuario)
 
     this.userForm = new FormGroup({
       _id: new FormControl(this.idUsuario || null, []),
@@ -43,5 +42,12 @@ export class UsuariosFormComponent {
 
   getDataForm(){
     console.log(this.userForm.value)
+  
+    if(this.idUsuario){
+      console.log('Actualizar')
+    }else{
+      console.log('Insertar')
+    }
+  
   }
 }

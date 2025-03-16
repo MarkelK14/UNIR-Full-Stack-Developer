@@ -20,7 +20,6 @@ export class VistaUsuarioComponent {
   isLoading: boolean = false;
 
   async ngOnInit() {
-    console.log(this.idUsuario);
     let id = this.idUsuario;
     this.isLoading = true;
     try{
