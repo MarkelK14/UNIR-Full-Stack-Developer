@@ -17,6 +17,7 @@ export class UserListComponent {
   page: number = 0;
   nextPage: number = 0;
   prevPage: number = 0;
+  total_pages: number = 0;
 
   enablePrevBtn: boolean = false;
   enableNextBtn: boolean = false;
@@ -42,6 +43,7 @@ export class UserListComponent {
       this.page = response.page;
       this.nextPage = response.page == response.total_pages ? 0 : response.page + 1;
       this.prevPage = response.page == 1 ? 0 : response.page - 1;
+      this.total_pages = response.total_pages;
       this.arrUsuarios = response.results;
 
       this.enablePrevBtn = this.prevPage > 0;

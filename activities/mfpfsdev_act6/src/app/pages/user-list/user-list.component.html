@@ -15,7 +15,7 @@
         <button class="btn btn-outline-primary" disabled><< Página anterior</button>
       }
 
-      <p>Página {{page}}</p>
+      <p>Página {{page}} de {{total_pages}}</p>
 
       @if (enableNextBtn){
         <button class="btn btn-primary" (click)="gotoNext()">Siguiente Página >></button>
