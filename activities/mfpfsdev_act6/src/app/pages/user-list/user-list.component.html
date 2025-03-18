@@ -23,11 +23,11 @@
         <button class="btn btn-outline-primary" disabled>Siguiente Página >></button>
       }
     </div>
-    <div class="row g-4 justify-content-center">
+    <div class="row g-5 justify-content-center">
       @for(usuario of arrUsuarios; track usuario.id){
-      <article class="col-12 col-md-6 col-xl-4">
-        <app-usuario-card [selectedUser] = "usuario"></app-usuario-card>
-      </article>
+        <article class="col-12 col-md-6 col-xl-4">
+          <app-usuario-card [selectedUser] = "usuario"></app-usuario-card>
+        </article>
       }
     </div>
   </section>
