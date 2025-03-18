@@ -25,12 +25,10 @@ export class UsuariosService {
   }
 
   update(user: IUsuario): Promise<IUsuario> {
-    let { _id, ...userBody } = user;
-    return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${_id}`, userBody))
+    return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${user._id}`, user))
   }
 
   insert(user: IUsuario): Promise<IUsuario> {
-    let { _id, ...userBody } = user;
-    return lastValueFrom(this.httpClient.post<IUsuario>(this.endPoint, userBody))
+    return lastValueFrom(this.httpClient.post<IUsuario>(this.endPoint, user))
   }
 }
