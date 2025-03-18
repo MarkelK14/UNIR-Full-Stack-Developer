@@ -1,0 +1,15 @@
+.card-img-top{
+    max-width: 256px;
+}
+
+.card-body {
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+}
+
+
+.card-footer {
+    width: 100%;
+    background-color: transparent;
+}

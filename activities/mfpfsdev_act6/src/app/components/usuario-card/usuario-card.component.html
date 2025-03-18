@@ -1,7 +1,9 @@
-<div class="card text-center p-4 shadow" style="width: 24rem;">
+<div class="card p-4 shadow align-items-center">
     <img src="{{selectedUser.image}}" class="card-img-top rounded-circle" alt="...">
     <div class="card-body">
-      <h5 class="card-title text-primary">{{selectedUser.first_name}} {{selectedUser.last_name}}</h5>
-        <app-buttons [selectedUser]="selectedUser" ></app-buttons>
+      <h5 class="card-title text-primary fs-6">{{selectedUser.first_name}} {{selectedUser.last_name}}</h5>
+    </div>
+    <div class="card-footer">
+      <app-buttons [selectedUser]="selectedUser" ></app-buttons>
     </div>
 </div>
