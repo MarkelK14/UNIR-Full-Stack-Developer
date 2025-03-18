@@ -7,8 +7,8 @@ import { UsuariosFormComponent } from './pages/usuarios-form/usuarios-form.compo
 export const routes: Routes = [
     { path: "", pathMatch: 'full', redirectTo: 'home' },
     { path: "home", component: UserListComponent },
-    { path: 'usuario/new', component: UsuariosFormComponent },
-    { path: "usuario/:idUsuario", component: VistaUsuarioComponent },
-    { path: "usuario/update/:idUsuario", component: UsuariosFormComponent },
+    { path: 'newuser', component: UsuariosFormComponent },
+    { path: "user/:idUsuario", component: VistaUsuarioComponent },
+    { path: "updateuser/:idUsuario", component: UsuariosFormComponent },
     { path: '**', component: Error404Component }
 ];
