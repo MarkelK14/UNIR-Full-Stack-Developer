@@ -13,22 +13,29 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class UsuariosFormComponent {
   @Input() idUsuario: string = ""
-  userForm: FormGroup = new FormGroup({}, [])
+  userForm: FormGroup = new FormGroup({
+    _id: new FormControl(null),
+    first_name: new FormControl(''),
+    last_name: new FormControl(''),
+    username: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
+  
   selectedUser!: IUsuario;
   usuariosService = inject(UsuariosService);
+  title: string = 'Registrar';
 
   async ngOnInit(){
 
     if (this.idUsuario) {
       try {
         this.selectedUser = await this.usuariosService.getById(this.idUsuario);
-        // this.title = 'Actualizar'
+        this.title = 'Actualizar'
       } catch (msg: any) {
         toast.error(msg.error.error)
       }
     }
-
-    console.log(this.idUsuario)
 
     this.userForm = new FormGroup({
       _id: new FormControl(this.idUsuario || null, []),
