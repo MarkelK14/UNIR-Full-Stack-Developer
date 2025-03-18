@@ -25,6 +25,7 @@ export class UsuariosFormComponent {
   selectedUser!: IUsuario;
   usuariosService = inject(UsuariosService);
   title: string = 'Registrar';
+  router = inject(Router);
 
   async ngOnInit(){
 
@@ -47,14 +48,26 @@ export class UsuariosFormComponent {
     }, [])
   }
 
-  getDataForm(){
-    console.log(this.userForm.value)
-  
-    if(this.idUsuario){
-      console.log('Actualizar')
-    }else{
-      console.log('Insertar')
+  async getDataForm(){
+    let response: IUsuario | any
+
+    try{
+      if(this.userForm.value._id){
+        response = await this.usuariosService.update(this.userForm.value);
+      }else{
+        response = await this.usuariosService.insert(this.userForm.value);
+      }
+
+      if (response.id) {
+        toast.success(`Usuario  ${this.title=='Registrar'?'registrado':'actualizado'} correctamente`)
+        this.router.navigate(['/home'])
+      }else{
+        toast.error(response.error)
+      }
+    } catch (msg: any) {
+      toast.error(msg.error)
     }
+  
   
   }
 }
