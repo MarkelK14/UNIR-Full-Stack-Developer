@@ -19,7 +19,8 @@ export class UsuariosFormComponent {
     last_name: new FormControl(''),
     username: new FormControl(''),
     email: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
+    image: new FormControl('')
   });
   
   selectedUser!: IUsuario;
@@ -45,6 +46,7 @@ export class UsuariosFormComponent {
       username: new FormControl(this.selectedUser?.username || "", []),
       email: new FormControl(this.selectedUser?.email || "", []),
       password: new FormControl(this.selectedUser?.password || "", []),
+      image: new FormControl(this.selectedUser?.image || "", [])
     }, [])
   }
 
