@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { GoogleMap, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
 import { CountriesService } from '../../services/countries.service';
 import { ICountry } from '../../interfaces/icountry.interface';
+import { DecimalPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mapa',
-  imports: [GoogleMap, MapAdvancedMarker, MapInfoWindow],
+  imports: [GoogleMap, MapAdvancedMarker, MapInfoWindow, DecimalPipe, RouterLink],
   templateUrl: './mapa.component.html',
   styleUrl: './mapa.component.css'
 })
@@ -13,6 +15,8 @@ export class MapaComponent {
   center: google.maps.LatLngLiteral = { lat: 40, lng: -3 };
   arrCountries: ICountry[] = [];
   countriesService = inject(CountriesService);
+
+  currentInfoWindow?: MapInfoWindow;
 
   ngOnInit() {
     //pedirle al navegador cual es mi posicion, con una API nativa de JS
@@ -52,11 +56,16 @@ export class MapaComponent {
   }
 
   openInfoWindow(marker: MapAdvancedMarker, infoWindow: MapInfoWindow){
+
+    this.currentInfoWindow?.close();
+    this.currentInfoWindow = infoWindow;
+
     infoWindow.open(marker);
   }
 
   getSelectedRegion(event: any){
     console.log(event.target.value);
+
     this.getRegion(event.target.value);
   }
 }

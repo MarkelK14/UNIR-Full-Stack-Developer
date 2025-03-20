@@ -13,4 +13,8 @@ export class CountriesService {
   getAll(region:string): Promise<ICountry[]>{
     return lastValueFrom(this.httpClient.get<ICountry[]>(`${this.endPoint}/region/${region}`));
   }
+
+  getByCca2(cca2: string): Promise<ICountry[]>{
+    return lastValueFrom(this.httpClient.get<ICountry[]>(`${this.endPoint}/alpha/${cca2}`));
+  }
 }

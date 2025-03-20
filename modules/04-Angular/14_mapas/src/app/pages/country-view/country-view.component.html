@@ -1,1 +1,34 @@
-<p>country-view works!</p>
+<section class="bg-secondary vh-100 pt-4">
+    <div class="container">
+        <div class="card p-3 shadow rounded-4 border-4 border-danger">
+            <h1><strong>{{country?.name?.common}}:</strong> {{country?.capital}}</h1>
+            <hr>
+            <div class="row">
+                <figure class="col-12 col-md-3">
+                    <img class="img-fluid" [src]="country?.flags?.svg" alt="">
+                </figure>
+                <div class="col-12 col-md-9">
+                    <a [routerLink]="['/mapa']" class="btn btn-danger btn-sm">Mapa</a>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Numero de habitantes: </strong>
+                            {{country?.population}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Moneda: </strong>
+                            {{extraerData(country?.currencies)?.name}} ({{extraerData(country?.currencies)?.symbol}})
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Language(s): </strong>
+                            <ul>
+                                @for (item of extraerLanguages(country?.languages); track $index) {
+                                    <li>{{item}}</li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -20,6 +20,7 @@
         <map-info-window
             #infoWindow="mapInfoWindow">
             <h4>Your position</h4>
+            <hr>
             <p>Are you at home?</p>
             </map-info-window>
     </map-advanced-marker>
@@ -35,7 +36,13 @@
             <map-info-window
             #infoWindow="mapInfoWindow">
             <h4>{{country.name.common}}</h4>
-            <p>{{country.capital}}</p>
+            <hr>
+            <p><strong>Capital: </strong>{{country.capital}}</p>
+            <p><strong>Habitantes: </strong>{{country.population | number}}</p>
+            <figure>
+                <img src="{{country.flags.png}}" alt="Bandera del país" class="img-fluid">
+            </figure>
+            <a [routerLink] = "['/country', country.cca2.toLocaleLowerCase()]" class="btn btn-danger btn-sm">Ver detalle</a>
             </map-info-window>
         </map-advanced-marker>
         }
