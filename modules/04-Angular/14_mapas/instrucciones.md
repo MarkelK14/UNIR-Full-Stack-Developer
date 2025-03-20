@@ -1,0 +1,17 @@
+- Instalamos por npm la libreria ```@angular/google-maps```
+  - ```ng add @angular/google-maps```
+  - ```npm install @angular/google-maps```
+  - [Aquí](https://www.npmjs.com/package/@angular/google-maps) está la documentación de cómo usar la API de Google Maps
+    - La documentación en concreto se encuentra [aquí] (https://github.com/angular/components/tree/main/src/google-maps#readme)
+- Creamos la API o credencial de google maps en [Google Developers Console](https://console.cloud.google.com/cloud-resource-manager?inv=1&invt=Absh-g)
+- Trabajaremos con la libreria [Rest Countries](https://restcountries.com/)
+  - En este caso trabajaremos con el apartado de regiones, que sería como continentes
+- Endpoint de api rest de paises: https://restcountries.com/v3.1/region/europe
+  - De aqui consultaremos los paises que vamos a pintar posteriormente en el mapa
+- Crear una interfaz ```Country```
+- Crear un servicio ```Countries```
+- Crear dos componentes: ```Mapa``` y ```CountryView```
+- Crear cuatro rutas, pero 2 principales
+  - ```/maps``` => ```MapaComponent```
+  - ```/country/:code``` => ```CountryViewComponent```
+- dentro del mapa vamos a cargar inicialmente los paises que conforman Europa, pero luego vamos a hacer un selector con continentes que muestren los paises de ese continente

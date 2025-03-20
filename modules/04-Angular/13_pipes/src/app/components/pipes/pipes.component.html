@@ -1,0 +1,37 @@
+<p>{{nombre}}</p>
+<p>{{ nombre | lowercase }}</p>
+<p>{{ nombre | uppercase }}</p>
+<p>{{ 'en un lugar de la mancha' | titlecase }}</p>
+<p>{{racional | number: "2.0-1"}}</p>
+<p>{{iva | percent}} de 1000 es {{1000 * iva}}</p>
+<p>Precio: {{precio | currency: "EUR"}}</p>
+<!-- los pipes se pueden concatenar para sumar sus resultado -->
+<p>{{fecha | date: 'dd-MMMM-yyyy' | lowercase}}</p>
+<!--
+Formato     Equivale              Salida
+----------  --------------------  --------------------------------
+short       M/d/yy h:mm a         6/15/15 9:03 AM
+medium      MMM d y h:mm:ss a     Jun 15 2015 9:03:01 AM
+long        MMMM d y h:mm:ss a z  June 15 2015 at 9:03:01 AM GMT+1
+shortDate   M/d/yy                6/15/15
+mediumDate  MMM d y               Jun 15 2015
+longDate    MMMM d y              June 15 2015
+fullDate    EEEE MMMM d y         Monday June 15 2015
+shortTime   h:mm a                9:03 AM
+mediumTime  h:mm:ss a             9:03:01 AM
+longTime    h:mm:ss a z           9:03:01 AM GMT+1
+fullTime    h:mm:ss a zzzz        9:03:01 AM GMT+01:00
+full        EEEE MMMM d y         Monday June 15 2015
+            h:mm:ss a zzzz        at 9:03:01 AM GMT+01:00
+-->
+
+<p>{{array}}</p>
+<!-- pipe de depuracion json-->
+<p>{{arrayJson | json}}</p>
+<!-- crear nuestro propios pipes -->
+<p>{{ 'tony stark - Iron man' | vueltecita | uppercase }}</p>
+
+
+<p>{{texto | recortarTexto: 200: "=>"}}</p>
+<p>PRECIO TOTAL: {{ productos | totalReduce : 'precio' }} €</p>
+<p>EDAD TOTAL: {{ alumnos | totalReduce : 'edad' }} €</p>

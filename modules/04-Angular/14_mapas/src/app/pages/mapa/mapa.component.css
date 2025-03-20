@@ -1,0 +1,11 @@
+.selector-paises {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+}
+
+.selector-paises select {
+    border: 3px solid tomato;
+    box-shadow: 0 0 5px black;
+}

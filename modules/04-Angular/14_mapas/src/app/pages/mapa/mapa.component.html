@@ -1,0 +1,45 @@
+<div class="selector-paises">
+    <select class="form-select" (change)="getSelectedRegion($event)">
+        <option value="">Selecciona una región</option>
+        <option value="europe">Europa</option>
+        <option value="asia">Asia</option>
+        <option value="africa">Africa</option>
+        <option value="americas">America</option>
+        <option value="oceania">Oceania</option>
+    </select>
+</div>
+
+<google-map width="100%" height="100vh" [zoom] = "4" [center] = "center" mapId="a1c518f43c9ec759">
+
+    <!-- <map-advanced-marker [position] = "center"></map-advanced-marker> -->
+
+    <map-advanced-marker
+    #marker="mapAdvancedMarker"
+    [position] = "center"
+    (mapClick)="openInfoWindow(marker, infoWindow)">
+        <map-info-window
+            #infoWindow="mapInfoWindow">
+            <h4>Your position</h4>
+            <p>Are you at home?</p>
+            </map-info-window>
+    </map-advanced-marker>
+
+    @for (country of arrCountries; track country.cca2){
+
+        @if(country.capitalInfo.latlng){
+            <map-advanced-marker
+            #marker="mapAdvancedMarker"
+            [position] = "{lat: country.capitalInfo.latlng[0], lng: country.capitalInfo.latlng[1]}"
+            [content]="country.markerIconImg"
+            (mapClick)="openInfoWindow(marker, infoWindow)">
+            <map-info-window
+            #infoWindow="mapInfoWindow">
+            <h4>{{country.name.common}}</h4>
+            <p>{{country.capital}}</p>
+            </map-info-window>
+        </map-advanced-marker>
+        }
+
+    }
+
+</google-map>
