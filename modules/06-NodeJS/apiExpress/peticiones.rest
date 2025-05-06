@@ -1,0 +1,6 @@
+@host = http://localhost:3000
+GET {{host}}/api/contactos
+###
+POST {{host}}/api/contactos
+###
+GET {{host}}/api/tareas
