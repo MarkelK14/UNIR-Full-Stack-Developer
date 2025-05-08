@@ -1,6 +1,20 @@
 @host = http://localhost:3000
 GET {{host}}/api/contactos
 ###
+GET {{host}}/api/contactos/89929
+###
 POST {{host}}/api/contactos
+Content-Type: application/json
+
+{
+    "nombre": "Mario",
+    "email": "mario@email.com",
+    "telefono": "918829182"
+}
 ###
 GET {{host}}/api/tareas
+###
+PUT {{host}}/api/contactos
+###
+GET {{host}}/api/tareas/prioridad?page=3&limit=15
+## req.query = { page: 3, limit: 10 }

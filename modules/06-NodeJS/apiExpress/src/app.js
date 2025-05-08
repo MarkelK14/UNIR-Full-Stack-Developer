@@ -1,10 +1,17 @@
 // Creation and configuration of the Express APP
 const express = require("express");
 const cors = require("cors");
+const dayjs = require("dayjs");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+// Middleware
+app.use( (req, rest, next) => {
+    console.log(dayjs().format('DD/MM/YYYY HH:mm:ss'));
+    next(); // Sigue con la ejecución
+});
 
 // Route configuration
 app.use('/api', require('./routes/api.routes'));

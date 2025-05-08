@@ -1,9 +1,10 @@
 // --> /api/tareas
-const { getAll } = require('../../controllers/tareas.controller');
+const { getAll, getByPrioridad } = require('../../controllers/tareas.controller');
 
 // Import the router from express
 const router = require('express').Router();
 
 router.get('/', getAll);
+router.get('/prioridad', getByPrioridad);
 
 module.exports = router;
