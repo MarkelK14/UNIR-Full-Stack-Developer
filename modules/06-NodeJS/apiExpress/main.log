@@ -1,0 +1,12 @@
+[08/05/2025 19:20:21] METHOD: GET; URL: /api/contactos
+[08/05/2025 19:20:29] METHOD: GET; URL: /api/contactos/89929
+[08/05/2025 19:20:34] METHOD: POST; URL: /api/contactos
+[08/05/2025 19:20:35] METHOD: PUT; URL: /api/contactos
+[08/05/2025 19:20:35] METHOD: GET; URL: /api/tareas
+[08/05/2025 19:20:36] METHOD: GET; URL: /api/tareas/prioridad?page=3&limit=15
+[08/05/2025 19:20:49] METHOD: POST; URL: /api/contactos
+[08/05/2025 19:20:50] METHOD: GET; URL: /api/contactos
+[08/05/2025 19:20:51] METHOD: GET; URL: /api/tareas/prioridad?page=3&limit=15
+[08/05/2025 19:20:52] METHOD: GET; URL: /api/tareas
+[08/05/2025 19:20:59] METHOD: GET; URL: /api/contactos/89929
+[08/05/2025 19:21:02] METHOD: GET; URL: /api/tareas/prioridad?page=3&limit=15

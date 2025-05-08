@@ -4,7 +4,7 @@ const getAll = (req, res) => {
 
 const getByPrioridad = (req, res) => {
     const { page = 1, limit = 10 } = req.query; // Destructuring con valores por defecto
-    res.send(`Recupera las tareas por prioridad PAGE ${page} NUM ${num}`);
+    res.send(`Recupera las tareas por prioridad PAGE ${page} LIMIT ${limit}`);
 }
 
 module.exports = {
