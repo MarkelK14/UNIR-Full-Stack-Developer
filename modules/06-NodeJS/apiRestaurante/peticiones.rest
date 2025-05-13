@@ -1,0 +1,19 @@
+@host = http://localhost:3000
+###
+GET {{host}}/api/restaurantes
+###
+GET {{host}}/api/restaurantes/1
+###
+GET {{host}}/api/restaurantes?page=2&limit=5
+###
+POST {{host}}/api/restaurantes
+Content-Type: application/json
+
+{
+    "nombre": "Restaurante insertado 1",
+    "direccion": "Calle Falsa 123",
+    "tipo_cocina": "Japonesa",
+    "telefono": "123456789",
+    "valoracion": 4.9,
+    "capacidad": 50
+}

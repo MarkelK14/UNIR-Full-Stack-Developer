@@ -14,8 +14,34 @@
 
 **URL**: /api/restaurantes
 
-**Headers**: XXXX
+**Headers**: ---
 
-**Body**: XXXX
+**Body**: ---
 
 **Response**: Un array con todos los restaurantes
+
+## Recuperar un restaurante a partir de su ID
+
+**Method**: GET
+
+**URL**: /api/restaurantes/<RESTAURANTE_ID>
+
+**Headers**: ---
+
+**Body**: ---
+
+**Response**: Un objeto con los datos del restaurante
+**Error Response**: 404 + Mensaje
+
+## Crear un nuevo restaurante
+
+**Method**: POST
+
+**URL**: /api/restaurantes/
+
+**Headers**: ---
+
+**Body**: nombre, direccion, tipo_cocina, telefono, valoracion. capacidad
+
+**Response**: El objeto que representa el nuevo objeto creado
+**Error Response**: 404 + Mensaje
