@@ -44,4 +44,65 @@
 **Body**: nombre, direccion, tipo_cocina, telefono, valoracion. capacidad
 
 **Response**: El objeto que representa el nuevo objeto creado
+
 **Error Response**: 404 + Mensaje
+
+## Actualización completa de un restaurante
+
+**Method**: PUT
+
+**URL**: /api/restaurantes/<RESTAURANTE_ID>
+
+**Headers**: ---
+
+**Body**: nombre, direccion, tipo_cocina, telefono, valoracion. capacidad
+
+**Response**: El objeto que con los datos del restaurante actualizados
+
+## Borrado de un restaurante
+
+**Method**: DELETE
+
+**URL**: /api/restaurantes/<RESTAURANTE_ID>
+
+**Headers**: ---
+
+**Body**: ---
+
+**Response**: El objeto restaurante borrado
+
+## Recuperar todos los restaurantes con sus mesas
+
+**Method**: GET
+
+**URL**: /api/restaurantes/
+
+**Headers**: ---
+
+**Body**: ---
+
+**Response**:
+```json
+[
+    {
+        "id": 1,
+        "nombre": "Casa Pepe",
+        "mesas": [
+            {
+                "capacidad": 12,
+                "numero": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Casa Luis",
+        "mesas": [
+            {
+                "capacidad": 12,
+                "numero": 1
+            }
+        ]
+    }
+]
+```

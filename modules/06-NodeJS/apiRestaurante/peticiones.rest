@@ -6,6 +6,8 @@ GET {{host}}/api/restaurantes/1
 ###
 GET {{host}}/api/restaurantes?page=2&limit=5
 ###
+GET {{host}}/api/restaurantes/mesas
+###
 POST {{host}}/api/restaurantes
 Content-Type: application/json
 
@@ -17,3 +19,17 @@ Content-Type: application/json
     "valoracion": 4.9,
     "capacidad": 50
 }
+###
+PUT {{host}}/api/restaurantes/40
+Content-Type: application/json
+
+{
+    "nombre": "Manhala",
+    "direccion": "Gran Via 123",
+    "tipo_cocina": "India",
+    "telefono": "987654321",
+    "valoracion": 3.2,
+    "capacidad": 10
+}
+###
+DELETE {{host}}/api/restaurantes/40
