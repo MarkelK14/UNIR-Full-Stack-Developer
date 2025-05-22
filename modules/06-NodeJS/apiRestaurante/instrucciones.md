@@ -14,7 +14,7 @@
 
 **URL**: /api/restaurantes
 
-**Headers**: ---
+**Headers**: { Authorization: TOKEN }
 
 **Body**: ---
 
@@ -106,3 +106,27 @@
     }
 ]
 ```
+
+## Registrar usuarios
+
+**Method**: POST
+
+**URL**: /api/usuarios/registro
+
+**Headers**: ---
+
+**Body**: username, email, password
+
+**Response**: Los datos del nuevo usuario creado
+
+## Login usuarios
+
+**Method**: POST
+
+**URL**: /api/usuarios/login
+
+**Headers**: ---
+
+**Body**: email, password
+
+**Response**: Login correcto
