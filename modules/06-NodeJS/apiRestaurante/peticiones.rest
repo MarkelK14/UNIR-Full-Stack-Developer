@@ -1,12 +1,15 @@
 @host = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoxOSwicm9sZSI6ImdlbmVyYWwiLCJpYXQiOjE3NDc5OTk4ODR9.1MVyicy2UosKTS6kavZlpokT79nYr4WBTzTn4wZJAUs
 ###
 GET {{host}}/api/restaurantes
 ###
 GET {{host}}/api/restaurantes/1
 ###
 GET {{host}}/api/restaurantes?page=2&limit=5
+Authorization: {{token}}
 ###
 GET {{host}}/api/restaurantes/mesas
+Authorization: {{token}}
 ###
 POST {{host}}/api/restaurantes
 Content-Type: application/json
@@ -55,3 +58,7 @@ Content-Type: application/json
     "email": "manolo.bombo@example.com",
     "password": "123456"
 }
+
+###
+GET {{host}}/api/usuarios/perfil
+Authorization: {{token}}

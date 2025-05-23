@@ -31,4 +31,8 @@ const login = async (req, res) => {
     });
 }
 
-module.exports = { registro, login }
+const perfil = (req, res) => {
+    res.json(req.user); // req.user es el usuario que viene del middleware
+}
+
+module.exports = { registro, login, perfil }

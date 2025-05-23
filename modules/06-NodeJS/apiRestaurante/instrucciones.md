@@ -130,3 +130,15 @@
 **Body**: email, password
 
 **Response**: Login correcto
+
+## Recuperar el perfil de usuario
+
+**Method**: GET
+
+**URL**: /api/usuarios/perfil
+
+**Headers**: { Authorization: TOKEN }
+
+**Body**: ---
+
+**Response**: Un objeto con los datos del usuario logueado

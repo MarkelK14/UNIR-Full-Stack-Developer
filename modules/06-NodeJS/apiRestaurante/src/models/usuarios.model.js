@@ -1,5 +1,4 @@
 const db = require ('../config/db');
-const { get } = require('../routes/api/usuarios.routes');
 
 const getById = async (usuarioId) => {
     const [result] = await db.query(
