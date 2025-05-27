@@ -1,0 +1,31 @@
+@host=http://localhost:3000
+
+GET {{host}}/api/products
+
+###
+GET {{host}}/api/products/dept/office
+
+###
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+    "name": "Lápiz morado",
+    "description": "Pinta mucho en morado, sobre todo",
+    "price": 12,
+    "stock": 100,
+    "department": "office",
+    "available": true
+}
+
+###
+PUT {{host}}/api/products/6836034d03f3ded08a79d18c
+Content-Type: application/json
+
+{
+    "price": 40,
+    "stock": 3000
+}
+
+###
+DELETE {{host}}/api/products/6836034d03f3ded08a79d18c
