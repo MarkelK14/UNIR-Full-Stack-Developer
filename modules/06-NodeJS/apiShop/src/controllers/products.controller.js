@@ -13,6 +13,22 @@ const getByDepartment = async (req, res) => {
     res.json(products);
 }
 
+const getByPrice = async (req, res) => {
+    const { minPrice, maxPrice } = req.params;
+    const products = await Product.find({ 
+        price: { 
+            $gte: minPrice, // greater than or equal to minPrice
+            $lte: maxPrice  // less than or equal to maxPrice
+        }
+    });
+    res.json(products);
+}
+
+const getActives = async (req, res) => {
+    const products = await Product.actives();
+    res.json(products);
+}
+
 const create = async (req, res) => {
     // req.body
     const product = await Product.create(req.body);
@@ -33,4 +49,4 @@ const remove = async (req, res) => {
 
 
 
-module.exports = { getAll, getByDepartment, create, edit, remove }
+module.exports = { getAll, getByDepartment, getByPrice, getActives, create, edit, remove }

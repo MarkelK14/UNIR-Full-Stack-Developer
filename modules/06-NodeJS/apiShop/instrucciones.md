@@ -57,3 +57,53 @@
 **Body**: ---
 
 **Response**: Un array con todos los productos de ese departamento
+
+## Recuperar los productos en un rango de precios
+
+**Method**: GET
+
+**URL**: /api/products/price/min/<MINPRICE>/max/<MAXPRICE>
+
+**Headers**: ---
+
+**Body**: ---
+
+**Response**: Un array con todos los productos cuyo precio está en ese rango
+
+## Recuperar todos los productos activos
+
+- Los productos activos tienen available -> true y stock >=10
+
+**Method**: GET
+
+**URL**: /api/products/actives
+
+**Headers**: ---
+
+**Body**: ---
+
+**Response**: Un array con todos los productos activos
+
+## Registro de usuarios
+
+**Method**: POST
+
+**URL**: /api/users/register
+
+**Headers**: ---
+
+**Body**: username, email, password, role?
+
+**Response**: El nuevo usuario creado
+
+## Login de usuarios
+
+**Method**: POST
+
+**URL**: /api/users/login
+
+**Headers**: ---
+
+**Body**: email, password
+
+**Response**: El token de acceso a la aplicación

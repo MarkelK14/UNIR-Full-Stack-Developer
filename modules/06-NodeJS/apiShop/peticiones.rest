@@ -3,7 +3,13 @@
 GET {{host}}/api/products
 
 ###
-GET {{host}}/api/products/dept/office
+GET {{host}}/api/products/dept/Muebles
+
+###
+GET {{host}}/api/products/price/min/50/max/150
+
+###
+GET {{host}}/api/products/actives
 
 ###
 POST {{host}}/api/products
@@ -29,3 +35,18 @@ Content-Type: application/json
 
 ###
 DELETE {{host}}/api/products/6836034d03f3ded08a79d18c
+
+
+########
+# USERS#
+########
+
+POST {{host}}/api/users/register
+Content-Type: application/json
+
+{
+    "username": "Pepito el de los palotes",
+    "email": "pepito.palotes@example.com",
+    "password": "123456",
+    "role": "admin"
+}
