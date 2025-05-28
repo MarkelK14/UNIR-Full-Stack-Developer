@@ -50,3 +50,13 @@ Content-Type: application/json
     "password": "123456",
     "role": "admin"
 }
+
+###
+
+POST {{host}}/api/users/login
+Content-Type: application/json
+
+{
+    "email": "pepito.palotes@example.com",
+    "password": "123456"
+}
