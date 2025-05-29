@@ -4,6 +4,10 @@ const dayjs = require('dayjs');
 
 const User = require('../models/users.model');
 
+const profile = async (req, res) => {
+    res.json(req.user);
+}
+
 const register = async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, 8);
 
@@ -25,9 +29,19 @@ const login = async (req, res) => {
     res.json({
         token: jwt.sign({
             user_id: user._id,
-            exp: dayjs().add(5, 'minutes').unix() // It's called exp so that the token expiration is handled automatically
+            exp: dayjs().add(15, 'minutes').unix() // It's called exp so that the token expiration is handled automatically
         }, "firma super secreta")
     });
 }
 
-module.exports = { register, login }
+const addToCart = async (req, res) => {
+    const { productId } = req.body;
+    req.user.cart.push(req.body.productId);
+    await req.user.save();
+
+    res.json({ message: "Producto añadido al carrito" });
+
+    
+}
+
+module.exports = { profile, register, login, addToCart }

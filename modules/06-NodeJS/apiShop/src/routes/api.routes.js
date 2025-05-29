@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
-// Define your routes here
-router.use('/products', require('./api/products.routes'));
+const { checkToken } = require('../middlewares/auth.middlewares');
+
+router.use('/products', checkToken, require('./api/products.routes'));
 router.use('/users', require('./api/users.routes'));
 
 module.exports = router;

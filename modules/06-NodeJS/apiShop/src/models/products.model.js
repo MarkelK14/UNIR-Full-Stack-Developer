@@ -6,7 +6,11 @@ const productSchema = new Schema({
     price: Number,
     stock: Number,
     department: String,
-    available: Boolean
+    available: Boolean,
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user' // Reference to the user model
+    },
 }, {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
     versionKey: false, // Disables the __v field

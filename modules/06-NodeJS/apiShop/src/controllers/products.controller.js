@@ -1,7 +1,7 @@
 const Product = require('../models/products.model')
 
 const getAll = async (req, res) => {
-    const products = await Product.find();
+    const products = await Product.find().populate('owner', '-_id username email'); // Populate the owner field with username and email, excluding _id
     res.json(products);
 }
 
@@ -31,6 +31,7 @@ const getActives = async (req, res) => {
 
 const create = async (req, res) => {
     // req.body
+    req.body.owner = req.user._id; // Set the owner to the authenticated user
     const product = await Product.create(req.body);
     res.json(product);
 }

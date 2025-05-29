@@ -11,7 +11,11 @@ const userSchema = new Schema({
         type: String,
         enum: ['admin', 'moderator', 'regular'],
         default: 'regular' // Default role is 'regular'
-    }
+    },
+    cart: [{
+        type: Schema.Types.ObjectId,
+        ref: 'product', // Reference to the cart model
+    }]
 }, {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
     versionKey: false, // Disables the __v field

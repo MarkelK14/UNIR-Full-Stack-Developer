@@ -1,9 +1,12 @@
 @host=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjgzNzU2NDJlNGZmODA1YzIzODIwNmNlIiwiZXhwIjoxNzQ4NTQ1OTQzLCJpYXQiOjE3NDg1NDUwNDN9.myrnHjk8vjQndhVd_TN5w87JfPjM4XKkFY9UdlISMTs
 
 GET {{host}}/api/products
+Authorization: {{token}}
 
 ###
-GET {{host}}/api/products/dept/Muebles
+GET {{host}}/api/products/dept/Informática
+Authorization: {{token}}
 
 ###
 GET {{host}}/api/products/price/min/50/max/150
@@ -14,13 +17,14 @@ GET {{host}}/api/products/actives
 ###
 POST {{host}}/api/products
 Content-Type: application/json
+Authorization: {{token}}
 
 {
-    "name": "Lápiz morado",
-    "description": "Pinta mucho en morado, sobre todo",
-    "price": 12,
-    "stock": 100,
-    "department": "office",
+    "name": "iPhone 32 X Pro",
+    "description": "Un teléfono que además llama",
+    "price": 2600,
+    "stock": 12,
+    "department": "Informática",
     "available": true
 }
 
@@ -60,3 +64,16 @@ Content-Type: application/json
     "email": "pepito.palotes@example.com",
     "password": "123456"
 }
+
+###
+PATCH {{host}}/api/users/addCart
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "productId": "683745b69070c6adb8317d67"
+}
+
+###
+GET {{host}}/api/users/me
+Authorization: {{token}}

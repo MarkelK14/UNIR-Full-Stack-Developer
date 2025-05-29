@@ -107,3 +107,27 @@
 **Body**: email, password
 
 **Response**: El token de acceso a la aplicación
+
+## Agregar producto al carrito de compra del usuario
+
+**Method**: PATCH
+
+**URL**: /api/users/addCart
+
+**Headers**: Authorization
+
+**Body**: productId
+
+**Response**: Mensaje de confirmación
+
+## Recuperar el perfil del usuario
+
+**Method**: GET
+
+**URL**: /api/users/me
+
+**Headers**: Authorization
+
+**Body**: ---
+
+**Response**: Los datos del usuario
