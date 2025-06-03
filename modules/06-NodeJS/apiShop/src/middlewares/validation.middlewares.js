@@ -1,10 +1,14 @@
 const validateSchema = (schema) => {
     return async (req, res, next) => {
         try {
-            await schema.validate(req.body);
+            await schema.validate(req.body, {
+                abortEarly: false, // Collect all validation errors
+                });
             next();
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            if(err.name === 'ValidationError'){
+                return res.status(400).json(err.errors);
+            }
         }
     };
 }
