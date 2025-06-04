@@ -1,3 +1,5 @@
+const fs = require('node:fs');
+
 const Product = require('../models/products.model')
 
 const getAll = async (req, res) => {
@@ -30,7 +32,13 @@ const getActives = async (req, res) => {
 }
 
 const create = async (req, res) => {
+    // Guardar la imagen en el servidor
+    const extension = req.file.mimetype.split('/')[1]; // Get the file extension from the mimetype
+    const newName = `${req.file.filename}.${extension}`; // Create a new name for the file
+    fs.renameSync(req.file.path, `./public/${newName}`); // Rename the file to the new name
+
     // req.body
+    req.body.image = newName;
     req.body.owner = req.user._id; // Set the owner to the authenticated user
     const product = await Product.create(req.body);
     res.json(product);

@@ -11,6 +11,7 @@ const productSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user' // Reference to the user model
     },
+    image: String
 }, {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
     versionKey: false, // Disables the __v field

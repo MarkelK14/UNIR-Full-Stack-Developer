@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public")); // Serve static files from the public directory in order to access images from the frontend (url. e.g. http://localhost:3000/image.jpg)
 
 // Route configuration
 app.use('/api', require('./routes/api.routes'));

@@ -13,11 +13,11 @@ export class NewProductComponent {
   files: File[] = [];
 
   newProductForm: FormGroup = new FormGroup({
-    name: new FormControl(null),
-    description: new FormControl(null),
-    price: new FormControl(null),
-    stock: new FormControl(null),
-    department: new FormControl(null),
+    name: new FormControl('Teclado medieval'),
+    description: new FormControl('Es como un teclado normal, pero con teclas de madera'),
+    price: new FormControl(12),
+    stock: new FormControl(12),
+    department: new FormControl('Office'),
     available: new FormControl(true)
   });
   productsService = inject(ProductsService);
