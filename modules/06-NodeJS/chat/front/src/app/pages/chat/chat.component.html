@@ -1,1 +1,31 @@
-<p>chat works!</p>
+<header>
+    <h1>Chat</h1>
+    <h3>Clientes conectados {{clientsCount}}</h3>
+</header>
+
+<main>
+    <ul class="list-group">
+        @for (item of messages; track $index) {
+            <li [class]="{
+                'list-group-item': true,
+                'list-group-item-success': item.socketId === socket.id
+            }">
+                <strong>{{ item.username }}:</strong> {{ item.message }}
+            </li>
+        }
+    </ul>
+</main>
+
+<footer>
+    <form [formGroup]="chatForm"(ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" formControlName="username" class="form-control" placeholder="Enter your username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Message</label>
+            <input type="text" formControlName="message" class="form-control" placeholder="Enter the message">
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-primary">
+    </form>
+</footer>
