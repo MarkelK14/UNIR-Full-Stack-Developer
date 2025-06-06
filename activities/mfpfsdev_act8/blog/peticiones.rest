@@ -1,0 +1,38 @@
+@host = http://localhost:3000
+
+#############
+## AUTORES ##
+#############
+
+### recuperación de todos los autores
+GET {{host}}/api/autores
+
+### recuperación de un autor específico y sus posts
+GET {{host}}/api/autores/11
+
+### creación de un nuevo autor
+POST {{host}}/api/autores/create
+Content-Type: application/json
+
+{
+    "nombre": "Pepito el de los palotes",
+    "email": "pepito.palotes@email.com",
+    "imagen": "https://randomuser.me/api/portraits/lego/8.jpg"
+}
+###########
+## POSTS ##
+###########
+
+### recuperación de todos los posts
+GET {{host}}/api/posts
+
+### creación de nuevos posts
+POST {{host}}/api/posts/create
+Content-Type: application/json
+
+{
+    "titulo": "Nuevo post de ejemplo",
+    "descripcion": "Este es el contenido de un nuevo post creado para pruebas.",
+    "categoria": "Tecnología",
+    "email": "pepito.palotes@email.com"
+}
